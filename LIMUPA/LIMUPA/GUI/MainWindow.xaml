@@ -59,8 +59,8 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
-                        <TextBox x:Name="searchTextBox" Text="Mã Code" Width="200" Height="30" FontSize="20" VerticalContentAlignment="Center"/>
-                        <Button x:Name="searchButton" Click="searchButton_Click" BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" Content="SEARCH" FontSize="20"/>
+                        <TextBox x:Name="searchTextBox1" PreviewMouseLeftButtonDown="searchTextBox1_PreviewMouseLeftButtonDown" Text="Mã Code" Width="200" Height="30" FontSize="20" VerticalContentAlignment="Center"/>
+                        <Button x:Name="searchButton1" Click="searchButton1_Click" BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" Content="SEARCH" FontSize="20"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,5,0,0">
@@ -84,9 +84,9 @@
                         </ComboBox>
 
                         <TextBlock Text="Giá: " FontSize="25" Margin="20,5,0,0"/>
-                        <TextBox Text="tối thiểu" Width="80" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="minimumPrice1" Text="tối thiểu" Width="80" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         <TextBlock Text=" - " FontSize="25"/>
-                        <TextBox Text="tối đa" Width="80" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="maximumPrice1" Text="tối đa" Width="80" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                         <TextBlock Text="Loại: " FontSize="25" Margin="20,5,0,0"/>
                         <ComboBox x:Name="cmbTypes1" Width="120" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -97,7 +97,8 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
-                        <Button Content="Tìm" FontWeight="Bold" Foreground="Red" Margin="100,0,0,0"/>
+                        <Button x:Name="filterButton1" Click="filterButton1_Click" Content="Lọc" FontWeight="Bold" Foreground="Red" Margin="100,0,0,0"/>
+                        <Button x:Name="refreshButton1" Click="refreshButton1_Click" Content="Làm mới" FontWeight="Bold" Foreground="Red" Margin="10,0,0,0"/>
                     </StackPanel>
 
                     <Grid Grid.Row="2" Margin="0,5,0,0">
@@ -146,8 +147,8 @@
                         </Grid.ColumnDefinitions>
                         <Button x:Name="addNew" Click="addNew_Click" Height="40" Background="Green" Foreground="White" HorizontalAlignment="Left" Width="180" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Content="Thêm Mới" Grid.Column="0"/>
                         <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="100,0,0,0"  VerticalAlignment="Center">
-                            <TextBox Text="Mã Code" Width="200" Height="30" FontSize="20" VerticalContentAlignment="Center"/>
-                            <Button BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" Content="SEARCH" FontSize="20"/>
+                            <TextBox x:Name="searchTextBox2" PreviewMouseLeftButtonDown="searchTextBox2_PreviewMouseLeftButtonDown" TextChanged="searchTextBox2_TextChanged" Text="Mã Code" Width="200" Height="30" FontSize="20" VerticalContentAlignment="Center"/>
+                            <Button x:Name="searchButton2" Click="searchButton2_Click" BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" Content="SEARCH" FontSize="20"/>
                         </StackPanel>
                     </Grid>
 
@@ -172,9 +173,9 @@
                         </ComboBox>
 
                         <TextBlock Text="Giá: " FontSize="25" Margin="20,5,0,0"/>
-                        <TextBox Text="tối thiểu" Width="80" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="minimumPrice2" PreviewMouseLeftButtonDown="minimumPrice2_PreviewMouseLeftButtonDown"  Text="tối thiểu" Width="80" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         <TextBlock Text=" - " FontSize="25"/>
-                        <TextBox Text="tối đa" Width="80" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="maximumPrice2" PreviewMouseLeftButtonDown="maximumPrice2_PreviewMouseLeftButtonDown" Text="tối đa" Width="80" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                         <TextBlock Text="Loại: " FontSize="25" Margin="20,5,0,0"/>
                         <ComboBox x:Name="cmbTypes2" Width="120" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -185,7 +186,8 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
-                        <Button Content="Tìm" FontWeight="Bold" Foreground="Red" Margin="100,0,0,0"/>
+                        <Button x:Name="filterButton2" Click="filterButton2_Click" Content="Lọc" FontWeight="Bold" Foreground="Red" Margin="100,0,0,0"/>
+                        <Button x:Name="refreshButton2" Click="refreshButton2_Click" Content="Làm mới" FontWeight="Bold" Foreground="Red" Margin="10,0,0,0"/>
                     </StackPanel>
 
                     <Grid Grid.Row="2">

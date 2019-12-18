@@ -50,5 +50,28 @@ namespace LIMUPA.BUS
         {
             dalGoods.UpdateGoods(info);
         }
+
+        public List<Good> GetGoodsByFilter(int filteredColor, int filteredBrand, double filteredMinimumPrice, double filteredMaximumPrice, int filterType)
+        {
+            List<Good> filteredGoods = dalGoods.GetAllGoods();
+
+            for(int i = 0; i < filteredGoods.Count; i++)
+            {
+                if((filteredGoods[i].Color == filteredColor|| filteredColor == 0)&& (filteredGoods[i].Brand == filteredBrand || filteredBrand == 0) &&
+                    (filteredGoods[i].Price >= filteredMinimumPrice && filteredGoods[i].Price <= filteredMaximumPrice || (filteredMinimumPrice == 0 && filteredMaximumPrice == 0)) &&
+                    (filteredGoods[i].Type == filterType || filterType == 0))
+                {
+                    continue;
+                }
+                else
+                {
+                    filteredGoods.RemoveAt(i);
+                    i--;
+                }
+            }
+
+
+            return filteredGoods;
+        }
     }
 }

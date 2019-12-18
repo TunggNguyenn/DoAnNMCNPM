@@ -195,8 +195,43 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="Images\T-shirtGucciTomorrow.jpeg" />
     <Resource Include="Images\addPicture.png" />
+    <Resource Include="Images\ao-khoac-nam-1.png" />
+    <Resource Include="Images\ao-khoac-nam-2.png" />
+    <Resource Include="Images\ao-khoac-nam-3.png" />
+    <Resource Include="Images\ao-khoac-nam-4.png" />
+    <Resource Include="Images\aolen1.jpeg" />
+    <Resource Include="Images\aolen2.jpeg" />
+    <Resource Include="Images\aolen3.jpeg" />
+    <Resource Include="Images\aolen4.jpeg" />
+    <Resource Include="Images\aosomi1.jpeg" />
+    <Resource Include="Images\aosomi2.jpeg" />
+    <Resource Include="Images\aosomi3.jpeg" />
+    <Resource Include="Images\aosomi4.jpeg" />
+    <Resource Include="Images\aothun1.jpeg" />
+    <Resource Include="Images\aothun2.jpeg" />
+    <Resource Include="Images\aothun3.jpeg" />
+    <Resource Include="Images\aothun4.jpeg" />
+    <Resource Include="Images\dam-1.png" />
+    <Resource Include="Images\dam-2.jpg" />
+    <Resource Include="Images\dam-3.jpg" />
+    <Resource Include="Images\dam-4.jpg" />
+    <Resource Include="Images\quan-jogger-1.jpg" />
+    <Resource Include="Images\quan-jogger-2.jpg" />
+    <Resource Include="Images\quan-jogger-3.jpg" />
+    <Resource Include="Images\quan-jogger-4.jpg" />
+    <Resource Include="Images\quan-tay-1.jpg" />
+    <Resource Include="Images\quan-tay-2.jpg" />
+    <Resource Include="Images\quan-tay-3.jpg" />
+    <Resource Include="Images\quan-tay-4.jpg" />
+    <Resource Include="Images\quan-the-thao-1.jpg" />
+    <Resource Include="Images\quan-the-thao-2.jpg" />
+    <Resource Include="Images\quan-the-thao-3.jpg" />
+    <Resource Include="Images\quan-the-thao-4.jpg" />
+    <Resource Include="Images\vay-1.jpg" />
+    <Resource Include="Images\vay-2.jpg" />
+    <Resource Include="Images\vay-3.jpg" />
+    <Resource Include="Images\vay-4.jpg" />
     <Content Include="MyShopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyShopModel.edmx</DependentUpon>
