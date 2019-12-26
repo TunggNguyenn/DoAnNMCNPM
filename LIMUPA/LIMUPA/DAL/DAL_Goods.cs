@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LIMUPA.DAL
 {
-    class DAL_Goods : DBConnect
+    class DAL_Goods: DBConect
     {
         public List<Good> GetAllGoods()
         {
@@ -24,12 +24,32 @@ namespace LIMUPA.DAL
             return db.Goods.Find(id);
         }
 
+        public void UpdateGoods(Good info)
+        {
+            //Xác định đối tượng cần cập nhật
+            var updatedGoods = db.Goods.Find(info.ID);
+
+            //Thay đổi các thông tin mới
+            updatedGoods.GoodsCode = info.GoodsCode;
+            updatedGoods.GoodsName = info.GoodsName;
+            updatedGoods.ID_Color = info.ID_Color;
+            updatedGoods.ID_Brand = info.ID_Brand;
+            updatedGoods.ID_Size = info.ID_Size;
+            updatedGoods.ID_Type = info.ID_Type;
+            updatedGoods.Number = info.Number;
+            updatedGoods.Import_Date = info.Import_Date;
+            updatedGoods.Price = info.Price;
+            updatedGoods.Picture = info.Picture;
+
+            db.SaveChanges();
+        }
+
         public void DeleteGoods(Good info)
         {
             //db.Goods.Attach(info);
-            for(int i= 0; i < db.Goods.ToList().Count; i++)
+            for (int i = 0; i < db.Goods.ToList().Count; i++)
             {
-                if(db.Goods.ToList()[i].ID == info.ID)
+                if (db.Goods.ToList()[i].ID == info.ID)
                 {
                     db.Goods.Remove(db.Goods.ToList()[i]);
                     db.SaveChanges();
@@ -37,23 +57,6 @@ namespace LIMUPA.DAL
                     return;
                 }
             }
-
-        }
-
-        public void UpdateGoods(Good info)
-        {
-            var goods = db.Goods.Find(info.ID);
-
-            goods.GoodsCode = info.GoodsCode;
-            goods.GoodsName = info.GoodsName;
-            goods.Color = info.Color;
-            goods.Brand = info.Brand;
-            goods.Size = info.Size;
-            goods.Type = info.Type;
-            goods.Price = info.Price;
-            goods.Picture = info.Picture;
-
-            db.SaveChanges();
         }
     }
 }

@@ -21,29 +21,9 @@ namespace LIMUPA.BUS
             dalGoods.AddGoods(newGoods);
         }
 
-        public Good GetGoodsByGoodsCode(string goodsCode)
-        {
-            Good goods = new Good();
-            for(int i = 0; i < dalGoods.GetAllGoods().Count; i++)
-            {
-                if(dalGoods.GetAllGoods()[i].GoodsCode == goodsCode)
-                {
-                    goods = dalGoods.GetAllGoods()[i];
-                    break;
-                }
-            }
-
-            return goods;
-        }
-
         public Good GetGoodsById(int id)
         {
             return dalGoods.GetGoodsById(id);
-        }
-
-        public void DeleteGoods(Good info)
-        {
-            dalGoods.DeleteGoods(info);
         }
 
         public void UpdateGoods(Good info)
@@ -51,15 +31,38 @@ namespace LIMUPA.BUS
             dalGoods.UpdateGoods(info);
         }
 
-        public List<Good> GetGoodsByFilter(int filteredColor, int filteredBrand, double filteredMinimumPrice, double filteredMaximumPrice, int filterType)
+        public void DeleteGoods(Good info)
+        {
+            dalGoods.DeleteGoods(info);
+        }
+
+
+
+        public Good GetGoodsByGoodsCode(string goodsCode)
+        {
+            Good selectedGoods = new Good();
+            List<Good> goods = GetAllGoods();
+            for (int i = 0; i < goods.Count; i++)
+            {
+                if (dalGoods.GetAllGoods()[i].GoodsCode == goodsCode)
+                {
+                    selectedGoods = goods[i];
+                    break;
+                }
+            }
+
+            return selectedGoods;
+        }
+
+        public List<Good> GetGoodsByFilter(int filteredColor, int filteredBrand, double filteredMinimumPrice, double filteredMaximumPrice, int filteredType, int filteredSize)
         {
             List<Good> filteredGoods = dalGoods.GetAllGoods();
 
-            for(int i = 0; i < filteredGoods.Count; i++)
+            for (int i = 0; i < filteredGoods.Count; i++)
             {
-                if((filteredGoods[i].Color == filteredColor|| filteredColor == 0)&& (filteredGoods[i].Brand == filteredBrand || filteredBrand == 0) &&
+                if ((filteredGoods[i].ID_Color == filteredColor || filteredColor == 0) && (filteredGoods[i].ID_Brand == filteredBrand || filteredBrand == 0) &&
                     (filteredGoods[i].Price >= filteredMinimumPrice && filteredGoods[i].Price <= filteredMaximumPrice || (filteredMinimumPrice == 0 && filteredMaximumPrice == 0)) &&
-                    (filteredGoods[i].Type == filterType || filterType == 0))
+                    (filteredGoods[i].ID_Type == filteredType || filteredType == 0) && (filteredGoods[i].ID_Size == filteredSize || filteredSize == 0))
                 {
                     continue;
                 }

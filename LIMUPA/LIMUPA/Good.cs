@@ -22,19 +22,23 @@ namespace LIMUPA
     
         public int ID { get; set; }
         public string GoodsCode { get; set; }
-        public Nullable<int> Color { get; set; }
-        public Nullable<int> Brand { get; set; }
-        public Nullable<int> Size { get; set; }
-        public Nullable<double> Price { get; set; }
-        public Nullable<int> Type { get; set; }
         public string GoodsName { get; set; }
+        public Nullable<int> ID_Color { get; set; }
+        public Nullable<int> ID_Brand { get; set; }
+        public Nullable<int> ID_Size { get; set; }
+        public Nullable<double> Price { get; set; }
+        public Nullable<int> ID_Type { get; set; }
+        public Nullable<int> Number { get; set; }
         public string Picture { get; set; }
+        public Nullable<System.DateTime> Import_Date { get; set; }
+        public Nullable<int> ID_Sale { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }
-        public virtual Brand Brand1 { get; set; }
-        public virtual Color Color1 { get; set; }
-        public virtual Size Size1 { get; set; }
-        public virtual Type Type1 { get; set; }
+        public virtual Brand Brand { get; set; }
+        public virtual Color Color { get; set; }
+        public virtual Sale Sale { get; set; }
+        public virtual Size Size { get; set; }
+        public virtual Type Type { get; set; }
     }
 }

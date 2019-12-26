@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MyShopModelStoreContainer" CdmEntityContainer="MyShopEntities">
+  <EntityContainerMapping StorageEntityContainer="MyShop_SQLServerModelStoreContainer" CdmEntityContainer="MyShop_SQLServerEntities">
     <EntitySetMapping Name="Bills">
-      <EntityTypeMapping TypeName="MyShopModel.Bill">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="BillCode" ColumnName="BillCode" />
           <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
-          <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
-          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="ID_Staff" ColumnName="ID_Staff" />
+          <ScalarProperty Name="ID_Goods" ColumnName="ID_Goods" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
           <ScalarProperty Name="Total" ColumnName="Total" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Brands">
-      <EntityTypeMapping TypeName="MyShopModel.Brand">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.Brand">
         <MappingFragment StoreEntitySet="Brand">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="BrandName" ColumnName="BrandName" />
@@ -23,48 +23,91 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Colors">
-      <EntityTypeMapping TypeName="MyShopModel.Color">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.Color">
         <MappingFragment StoreEntitySet="Color">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ColorName" ColumnName="ColorName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Expenses">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.Expens">
+        <MappingFragment StoreEntitySet="Expenses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Electric" ColumnName="Electric" />
+          <ScalarProperty Name="Water" ColumnName="Water" />
+          <ScalarProperty Name="Rent_Premises" ColumnName="Rent_Premises" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Goods">
-      <EntityTypeMapping TypeName="MyShopModel.Good">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.Good">
         <MappingFragment StoreEntitySet="Goods">
-          <ScalarProperty Name="Picture" ColumnName="Picture" />
-          <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="GoodsCode" ColumnName="GoodsCode" />
-          <ScalarProperty Name="Color" ColumnName="Color" />
-          <ScalarProperty Name="Brand" ColumnName="Brand" />
-          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
+          <ScalarProperty Name="ID_Color" ColumnName="ID_Color" />
+          <ScalarProperty Name="ID_Brand" ColumnName="ID_Brand" />
+          <ScalarProperty Name="ID_Size" ColumnName="ID_Size" />
           <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Import_Date" ColumnName="Import_Date" />
+          <ScalarProperty Name="ID_Sale" ColumnName="ID_Sale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permisions">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.Permision">
+        <MappingFragment StoreEntitySet="Permision">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NamePermisson" ColumnName="NamePermisson" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PermisionDetails">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.PermisionDetail">
+        <MappingFragment StoreEntitySet="PermisionDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameAction" ColumnName="NameAction" />
+          <ScalarProperty Name="CodeAction" ColumnName="CodeAction" />
+          <ScalarProperty Name="ID_Permision" ColumnName="ID_Permision" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PermisionRelationships">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.PermisionRelationship">
+        <MappingFragment StoreEntitySet="PermisionRelationship">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+          <ScalarProperty Name="ID_Permision" ColumnName="ID_Permision" />
+          <ScalarProperty Name="Suspended" ColumnName="Suspended" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.Sale">
+        <MappingFragment StoreEntitySet="Sale">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PercentageSale" ColumnName="PercentageSale" />
+          <ScalarProperty Name="Donate" ColumnName="Donate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Sizes">
-      <EntityTypeMapping TypeName="MyShopModel.Size">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.Size">
         <MappingFragment StoreEntitySet="Size">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="SizeName" ColumnName="SizeName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Staffs">
-      <EntityTypeMapping TypeName="MyShopModel.Staff">
-        <MappingFragment StoreEntitySet="Staff">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="MyShopModel.sysdiagram">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -75,10 +118,20 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Types">
-      <EntityTypeMapping TypeName="MyShopModel.Type">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.Type">
         <MappingFragment StoreEntitySet="Type">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameUser" ColumnName="NameUser" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

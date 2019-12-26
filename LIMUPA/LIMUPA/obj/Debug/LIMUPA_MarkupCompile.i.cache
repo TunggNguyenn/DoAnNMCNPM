@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Tung Nguyen\source\repos\NMCNPM\LIMUPA\LIMUPA\obj\Debug\
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\
 LIMUPA
 none
 false
 DEBUG;TRACE
-C:\Users\Tung Nguyen\source\repos\NMCNPM\LIMUPA\LIMUPA\App.xaml
-4-2028646808
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\App.xaml
+71551264364
 21187196051
-361721375999
-18-2014662871
-GUI\AddNewWindows.xaml;GUI\GoodsInformation.xaml;GUI\MainWindow.xaml;GUI\UpdateWindows.xaml;
+511888945623
+21631751804
+GUI\AddNewWindow.xaml;GUI\AnnouncementWindow.xaml;GUI\GoodsInformationWindow.xaml;GUI\HomeWindow.xaml;GUI\LoginWindow.xaml;GUI\UpdateWindow.xaml;GUI\ValidationWindow.xaml;
 
 False
 

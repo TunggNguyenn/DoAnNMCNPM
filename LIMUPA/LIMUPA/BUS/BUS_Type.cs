@@ -10,6 +10,7 @@ namespace LIMUPA.BUS
     class BUS_Type
     {
         DAL_Type dalType = new DAL_Type();
+
         public List<Type> GetAllTypes()
         {
             return dalType.GetAllTypes();

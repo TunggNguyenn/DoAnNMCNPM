@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="MyShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="MyShop_SQLServerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Bill">
     <Key>
       <PropertyRef Name="ID" />
@@ -7,9 +7,9 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BillCode" Type="ntext" />
     <Property Name="CustomerName" Type="ntext" />
-    <Property Name="StaffID" Type="int" />
-    <Property Name="GoodsID" Type="int" />
-    <Property Name="Time" Type="datetime" />
+    <Property Name="ID_Staff" Type="int" />
+    <Property Name="ID_Goods" Type="int" />
+    <Property Name="DateTime" Type="datetime" />
     <Property Name="Total" Type="float" />
   </EntityType>
   <EntityType Name="Brand">
@@ -26,6 +26,17 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ColorName" Type="ntext" />
   </EntityType>
+  <EntityType Name="Expenses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Electric" Type="float" />
+    <Property Name="Water" Type="float" />
+    <Property Name="Rent_Premises" Type="float" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="Total" Type="float" />
+  </EntityType>
   <EntityType Name="Goods">
     <Key>
       <PropertyRef Name="ID" />
@@ -33,12 +44,49 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="GoodsCode" Type="ntext" />
     <Property Name="GoodsName" Type="ntext" />
-    <Property Name="Color" Type="int" />
-    <Property Name="Brand" Type="int" />
-    <Property Name="Size" Type="int" />
+    <Property Name="ID_Color" Type="int" />
+    <Property Name="ID_Brand" Type="int" />
+    <Property Name="ID_Size" Type="int" />
     <Property Name="Price" Type="float" />
-    <Property Name="Type" Type="int" />
+    <Property Name="ID_Type" Type="int" />
+    <Property Name="Number" Type="int" />
     <Property Name="Picture" Type="ntext" />
+    <Property Name="Import_Date" Type="datetime" />
+    <Property Name="ID_Sale" Type="int" />
+  </EntityType>
+  <EntityType Name="Permision">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NamePermisson" Type="ntext" />
+    <Property Name="Description" Type="ntext" />
+  </EntityType>
+  <EntityType Name="PermisionDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAction" Type="ntext" />
+    <Property Name="CodeAction" Type="ntext" />
+    <Property Name="ID_Permision" Type="int" />
+  </EntityType>
+  <EntityType Name="PermisionRelationship">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_User" Type="int" Nullable="false" />
+    <Property Name="ID_Permision" Type="int" Nullable="false" />
+    <Property Name="Suspended" Type="bit" />
+  </EntityType>
+  <EntityType Name="Sale">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PercentageSale" Type="int" />
+    <Property Name="Donate" Type="ntext" />
   </EntityType>
   <EntityType Name="Size">
     <Key>
@@ -46,15 +94,6 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SizeName" Type="ntext" />
-  </EntityType>
-  <EntityType Name="Staff">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StaffName" Type="ntext" />
-    <Property Name="Age" Type="int" />
-    <Property Name="Address" Type="ntext" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -73,7 +112,16 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TypeName" Type="ntext" />
   </EntityType>
-  <Association Name="FK_Bill_Bill">
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameUser" Type="ntext" Nullable="false" />
+    <Property Name="UserName" Type="ntext" Nullable="false" />
+    <Property Name="PassWord" Type="ntext" />
+  </EntityType>
+  <Association Name="FK_Bill_Goods">
     <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -81,19 +129,19 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Bill">
-        <PropertyRef Name="GoodsID" />
+        <PropertyRef Name="ID_Goods" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Bill_Staff">
-    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+  <Association Name="FK_Bill_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Staff">
+      <Principal Role="User">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Bill">
-        <PropertyRef Name="StaffID" />
+        <PropertyRef Name="ID_Staff" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -105,7 +153,7 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Goods">
-        <PropertyRef Name="Brand" />
+        <PropertyRef Name="ID_Brand" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -117,7 +165,19 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Goods">
-        <PropertyRef Name="Color" />
+        <PropertyRef Name="ID_Color" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Goods_Sale">
+    <End Role="Sale" Type="Self.Sale" Multiplicity="0..1" />
+    <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sale">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Goods">
+        <PropertyRef Name="ID_Sale" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -129,7 +189,7 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Goods">
-        <PropertyRef Name="Size" />
+        <PropertyRef Name="ID_Size" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -141,25 +201,66 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Goods">
-        <PropertyRef Name="Type" />
+        <PropertyRef Name="ID_Type" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MyShopModelStoreContainer">
+  <Association Name="FK_PermisionDetail_PermisionDetail">
+    <End Role="Permision" Type="Self.Permision" Multiplicity="0..1" />
+    <End Role="PermisionDetail" Type="Self.PermisionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permision">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PermisionDetail">
+        <PropertyRef Name="ID_Permision" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermisionRelationship_Permision1">
+    <End Role="Permision" Type="Self.Permision" Multiplicity="1" />
+    <End Role="PermisionRelationship" Type="Self.PermisionRelationship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permision">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PermisionRelationship">
+        <PropertyRef Name="ID_Permision" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermisionRelationship_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="PermisionRelationship" Type="Self.PermisionRelationship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PermisionRelationship">
+        <PropertyRef Name="ID_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyShop_SQLServerModelStoreContainer">
     <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permision" EntityType="Self.Permision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PermisionDetail" EntityType="Self.PermisionDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PermisionRelationship" EntityType="Self.PermisionRelationship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Bill_Bill" Association="Self.FK_Bill_Bill">
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Bill_Goods" Association="Self.FK_Bill_Goods">
       <End Role="Goods" EntitySet="Goods" />
       <End Role="Bill" EntitySet="Bill" />
     </AssociationSet>
-    <AssociationSet Name="FK_Bill_Staff" Association="Self.FK_Bill_Staff">
-      <End Role="Staff" EntitySet="Staff" />
+    <AssociationSet Name="FK_Bill_User" Association="Self.FK_Bill_User">
+      <End Role="User" EntitySet="User" />
       <End Role="Bill" EntitySet="Bill" />
     </AssociationSet>
     <AssociationSet Name="FK_Goods_Brand" Association="Self.FK_Goods_Brand">
@@ -170,6 +271,10 @@
       <End Role="Color" EntitySet="Color" />
       <End Role="Goods" EntitySet="Goods" />
     </AssociationSet>
+    <AssociationSet Name="FK_Goods_Sale" Association="Self.FK_Goods_Sale">
+      <End Role="Sale" EntitySet="Sale" />
+      <End Role="Goods" EntitySet="Goods" />
+    </AssociationSet>
     <AssociationSet Name="FK_Goods_Size" Association="Self.FK_Goods_Size">
       <End Role="Size" EntitySet="Size" />
       <End Role="Goods" EntitySet="Goods" />
@@ -177,6 +282,18 @@
     <AssociationSet Name="FK_Goods_Type" Association="Self.FK_Goods_Type">
       <End Role="Type" EntitySet="Type" />
       <End Role="Goods" EntitySet="Goods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermisionDetail_PermisionDetail" Association="Self.FK_PermisionDetail_PermisionDetail">
+      <End Role="Permision" EntitySet="Permision" />
+      <End Role="PermisionDetail" EntitySet="PermisionDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermisionRelationship_Permision1" Association="Self.FK_PermisionRelationship_Permision1">
+      <End Role="Permision" EntitySet="Permision" />
+      <End Role="PermisionRelationship" EntitySet="PermisionRelationship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermisionRelationship_User" Association="Self.FK_PermisionRelationship_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="PermisionRelationship" EntitySet="PermisionRelationship" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

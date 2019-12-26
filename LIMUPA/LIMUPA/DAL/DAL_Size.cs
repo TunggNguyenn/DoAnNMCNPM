@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LIMUPA.DAL
 {
-    class DAL_Size : DBConnect
+    class DAL_Size: DBConect
     {
         public List<Size> GetAllSizes()
         {

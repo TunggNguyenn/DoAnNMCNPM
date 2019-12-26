@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LIMUPA.DAL
 {
-    class DAL_Brand : DBConnect
+    class DAL_Brand: DBConect
     {
         public List<Brand> GetAllBrands()
         {

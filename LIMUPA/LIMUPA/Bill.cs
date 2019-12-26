@@ -17,12 +17,12 @@ namespace LIMUPA
         public int ID { get; set; }
         public string BillCode { get; set; }
         public string CustomerName { get; set; }
-        public Nullable<int> StaffID { get; set; }
-        public Nullable<int> GoodsID { get; set; }
-        public Nullable<System.DateTime> Time { get; set; }
+        public Nullable<int> ID_Staff { get; set; }
+        public Nullable<int> ID_Goods { get; set; }
+        public Nullable<System.DateTime> DateTime { get; set; }
         public Nullable<double> Total { get; set; }
     
         public virtual Good Good { get; set; }
-        public virtual Staff Staff { get; set; }
+        public virtual User User { get; set; }
     }
 }
