@@ -13,6 +13,9 @@
     <Property Name="Total" Type="Double" />
     <NavigationProperty Name="Good" Relationship="Self.FK_Bill_Goods" FromRole="Bill" ToRole="Goods" />
     <NavigationProperty Name="User" Relationship="Self.FK_Bill_User" FromRole="Bill" ToRole="User" />
+    <Property Name="VAT" Type="Double" />
+    <Property Name="CustomerAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerPhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Brand">
     <Key>

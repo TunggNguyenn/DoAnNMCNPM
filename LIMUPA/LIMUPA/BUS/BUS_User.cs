@@ -10,6 +10,7 @@ namespace LIMUPA.BUS
     class BUS_User
     {
         DAL_User dalUser = new DAL_User();
+
         public int GetID(string username, string password)
         {
             List<User> users = dalUser.GetAllUsers();
@@ -23,6 +24,21 @@ namespace LIMUPA.BUS
             }
 
             return -1;
+        }
+
+        public string GetUserNameByUserID(int userID)
+        {
+            List<User> users = dalUser.GetAllUsers();
+
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].ID == userID)
+                {
+                    return users[i].NameUser;
+                }
+            }
+
+            return "";
         }
     }
 }

@@ -11,6 +11,9 @@
     <Property Name="ID_Goods" Type="int" />
     <Property Name="DateTime" Type="datetime" />
     <Property Name="Total" Type="float" />
+    <Property Name="VAT" Type="float" />
+    <Property Name="CustomerAddress" Type="ntext" />
+    <Property Name="CustomerPhoneNumber" Type="ntext" />
   </EntityType>
   <EntityType Name="Brand">
     <Key>

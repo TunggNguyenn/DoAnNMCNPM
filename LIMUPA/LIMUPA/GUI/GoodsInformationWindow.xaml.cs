@@ -19,11 +19,11 @@ namespace LIMUPA.GUI
     /// </summary>
     public partial class GoodsInformationWindow : Window
     {
-        public GoodsInformationWindow(Good good)
+        public GoodsInformationWindow(Good goods)
         {
             InitializeComponent();
 
-            this.DataContext = good;
+            this.DataContext = goods;
         }
 
         private void exitButton_Click(object sender, RoutedEventArgs e)

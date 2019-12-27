@@ -4,6 +4,9 @@
     <EntitySetMapping Name="Bills">
       <EntityTypeMapping TypeName="MyShop_SQLServerModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="CustomerPhoneNumber" ColumnName="CustomerPhoneNumber" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="VAT" ColumnName="VAT" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="BillCode" ColumnName="BillCode" />
           <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />

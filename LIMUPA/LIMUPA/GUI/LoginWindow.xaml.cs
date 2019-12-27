@@ -73,7 +73,7 @@ namespace LIMUPA.GUI
                 {
                     string permisionName = busPermision.GetNamePermision(permisionID);
 
-                    var HomeWindowsScreen = new HomeWindow(permisionName);
+                    var HomeWindowsScreen = new HomeWindow(userID, permisionName);
                     this.Hide();
                     if (HomeWindowsScreen.ShowDialog() == true)
                     {

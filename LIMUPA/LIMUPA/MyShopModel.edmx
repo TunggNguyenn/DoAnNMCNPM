@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MyShop_SQLServerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MyShop_SQLServerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bill">
           <Key>
             <PropertyRef Name="ID" />
@@ -16,6 +16,9 @@
           <Property Name="ID_Goods" Type="int" />
           <Property Name="DateTime" Type="datetime" />
           <Property Name="Total" Type="float" />
+          <Property Name="VAT" Type="float" />
+          <Property Name="CustomerAddress" Type="ntext" />
+          <Property Name="CustomerPhoneNumber" Type="ntext" />
         </EntityType>
         <EntityType Name="Brand">
           <Key>
@@ -301,8 +304,7 @@
             <End Role="PermisionRelationship" EntitySet="PermisionRelationship" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyShop_SQLServerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -319,6 +321,9 @@
           <Property Name="Total" Type="Double" />
           <NavigationProperty Name="Good" Relationship="Self.FK_Bill_Goods" FromRole="Bill" ToRole="Goods" />
           <NavigationProperty Name="User" Relationship="Self.FK_Bill_User" FromRole="Bill" ToRole="User" />
+          <Property Name="VAT" Type="Double" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Brand">
           <Key>
@@ -631,6 +636,9 @@
           <EntitySetMapping Name="Bills">
             <EntityTypeMapping TypeName="MyShop_SQLServerModel.Bill">
               <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="CustomerPhoneNumber" ColumnName="CustomerPhoneNumber" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="BillCode" ColumnName="BillCode" />
                 <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />

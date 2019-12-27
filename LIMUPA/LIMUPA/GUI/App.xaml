@@ -13,6 +13,8 @@
             <converter:SizeConverter x:Key="sizeConverter"/>
             <converter:TypeConverter x:Key="typeConverter"/>
             <converter:PriceConverter x:Key="priceConverter"/>
+            <converter:SaleConverter x:Key="saleConverter"/>
+            <converter:UserConverter x:Key="userConverter"/>
 
             <Style x:Key="{x:Type GridViewColumnHeader}" TargetType="GridViewColumnHeader">
                 <Setter Property="HorizontalContentAlignment" Value="Center" />

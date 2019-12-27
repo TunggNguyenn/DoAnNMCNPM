@@ -83,14 +83,28 @@
     <Compile Include="Brand.cs">
       <DependentUpon>MyShopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BUS\BUS_Sale.cs" />
     <Compile Include="Color.cs">
       <DependentUpon>MyShopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Converter\SaleConverter.cs" />
+    <Compile Include="Converter\UserConverter.cs" />
+    <Compile Include="DAL\DAL_Bill.cs" />
+    <Compile Include="DAL\DAL_Sale.cs" />
     <Compile Include="Expens.cs">
       <DependentUpon>MyShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Good.cs">
       <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AddItemsToCartWindow.xaml.cs">
+      <DependentUpon>AddItemsToCartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SaleGoodsInfoWindow.xaml.cs">
+      <DependentUpon>SaleGoodsInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UpdateSaleGoodsWindow.xaml.cs">
+      <DependentUpon>UpdateSaleGoodsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyShopModel.cs">
       <AutoGen>True</AutoGen>
@@ -121,6 +135,10 @@
     <Compile Include="User.cs">
       <DependentUpon>MyShopModel.tt</DependentUpon>
     </Compile>
+    <Page Include="GUI\AddItemsToCartWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\AddNewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -186,6 +204,14 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="GUI\SaleGoodsInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\UpdateSaleGoodsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\UpdateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -243,6 +269,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\shopping-bag.png" />
+    <Resource Include="Images\search.png" />
+    <Resource Include="Images\trash.png" />
     <Content Include="MyShopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyShopModel.edmx</DependentUpon>

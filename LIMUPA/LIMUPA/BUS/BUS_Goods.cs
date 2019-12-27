@@ -36,6 +36,15 @@ namespace LIMUPA.BUS
             dalGoods.DeleteGoods(info);
         }
 
+        public void UpdateSaleGoods(Good info)
+        {
+            dalGoods.UpdateSaleGoods(info);
+        }
+
+        public void DeleteSaleGoods(Good info)
+        {
+            dalGoods.DeleteSaleGoods(info);
+        }
 
 
         public Good GetGoodsByGoodsCode(string goodsCode)

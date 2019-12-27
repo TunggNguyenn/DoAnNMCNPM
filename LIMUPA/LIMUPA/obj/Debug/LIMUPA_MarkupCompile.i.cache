@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\App.xaml
-71551264364
+101911757097
 21187196051
-511888945623
+59-639656025
 21631751804
-GUI\AddNewWindow.xaml;GUI\AnnouncementWindow.xaml;GUI\GoodsInformationWindow.xaml;GUI\HomeWindow.xaml;GUI\LoginWindow.xaml;GUI\UpdateWindow.xaml;GUI\ValidationWindow.xaml;
+GUI\AddItemsToCartWindow.xaml;GUI\AddNewWindow.xaml;GUI\AnnouncementWindow.xaml;GUI\GoodsInformationWindow.xaml;GUI\HomeWindow.xaml;GUI\LoginWindow.xaml;GUI\SaleGoodsInfoWindow.xaml;GUI\UpdateSaleGoodsWindow.xaml;GUI\UpdateWindow.xaml;GUI\ValidationWindow.xaml;
 
-False
+True
 

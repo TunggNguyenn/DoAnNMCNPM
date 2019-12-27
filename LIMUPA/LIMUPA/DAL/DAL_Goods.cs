@@ -58,5 +58,27 @@ namespace LIMUPA.DAL
                 }
             }
         }
+
+        public void UpdateSaleGoods(Good info)
+        {
+            //Xác định đối tượng cần cập nhật
+            var updatedSaleGoods = db.Goods.Find(info.ID);
+
+            //Thay đổi các thông tin mới
+            updatedSaleGoods.ID_Sale = info.ID_Sale;
+
+            db.SaveChanges();
+        }
+
+        public void DeleteSaleGoods(Good info)
+        {
+            //Xác định đối tượng cần cập nhật
+            var deleteSaleGoods = db.Goods.Find(info.ID);
+
+            //Thay đổi các thông tin mới
+            deleteSaleGoods.ID_Sale = info.ID_Sale;
+
+            db.SaveChanges();
+        }
     }
 }

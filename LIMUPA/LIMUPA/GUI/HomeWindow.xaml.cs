@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LIMUPA.BUS;
+using LIMUPA.Converter;
 
 namespace LIMUPA.GUI
 {
@@ -27,8 +28,10 @@ namespace LIMUPA.GUI
         BUS_Goods busGoods = new BUS_Goods();
         BUS_Size busSize = new BUS_Size();
 
+        UserConverter userConverter = new UserConverter();
+        BindingList<Good> _goodsList = new BindingList<Good>();
 
-        public HomeWindow(string permisionName)
+        public HomeWindow(int userID, string permisionName)
         {
             InitializeComponent();
 
@@ -37,6 +40,10 @@ namespace LIMUPA.GUI
                 saleTabItem.Visibility = Visibility.Collapsed;
                 expensesTabItem.Visibility = Visibility.Collapsed;
             }
+
+
+            staffnameTextBlock.Text = (string)userConverter.Convert(userID, null, null, null);
+            goodsListView.ItemsSource = _goodsList;
 
             cmbColors1.ItemsSource = cmbColors2.ItemsSource = busColor.GetAllColors();
             cmbBrands1.ItemsSource = cmbBrands2.ItemsSource = busBrand.GetAllBrands();
@@ -47,8 +54,15 @@ namespace LIMUPA.GUI
             goodsListView2.ItemsSource = busGoods.GetAllGoods();
 
             //Add Filter into Search
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(goodsListView2.ItemsSource);
-            view.Filter = GoodsFilter;
+            CollectionView filterView = (CollectionView)CollectionViewSource.GetDefaultView(goodsListView2.ItemsSource);
+            filterView.Filter = GoodsFilter;
+
+
+            //Sale
+            goodsListView3.ItemsSource = busGoods.GetAllGoods();
+            CollectionView saleView = (CollectionView)CollectionViewSource.GetDefaultView(goodsListView3.ItemsSource);
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("ID_Sale");
+            saleView.GroupDescriptions.Add(groupDescription);
         }
 
         private bool GoodsFilter(object item)
@@ -310,6 +324,7 @@ namespace LIMUPA.GUI
                 {
                     goodsListView1.ItemsSource = busGoods.GetAllGoods();
                     goodsListView2.ItemsSource = busGoods.GetAllGoods();
+                    goodsListView3.ItemsSource = busGoods.GetAllGoods();
 
                     return;
                 }
@@ -328,7 +343,115 @@ namespace LIMUPA.GUI
             {
                 goodsListView1.ItemsSource = busGoods.GetAllGoods();
                 goodsListView2.ItemsSource = busGoods.GetAllGoods();
+                goodsListView3.ItemsSource = busGoods.GetAllGoods();
 
+                return;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void searchButton3_Click(object sender, RoutedEventArgs e)
+        {
+            if (searchTextBox3.Text.Length == 0)
+            {
+                return;
+            }
+
+            Good goods = busGoods.GetGoodsByGoodsCode(searchTextBox3.Text);
+
+            if (goods.GoodsCode == searchTextBox3.Text)
+            {
+                var SaleGoodsInfoWindowScreen = new SaleGoodsInfoWindow(goods);
+
+                if (SaleGoodsInfoWindowScreen.ShowDialog() == true)
+                {
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            //MessageBox.Show("Không tìm thấy...Vui lòng nhập lại Code!");
+            var AnnouncementWindowScreen = new AnnouncementWindow("DON'T FIND THIS CODE...PLEASE TYPE AGAIN!");
+
+            if (AnnouncementWindowScreen.ShowDialog() == true)
+            {
+                return;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void goodsListView3_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedGoods = goodsListView3.SelectedItem as Good;
+
+            Good updatedGoods = busGoods.GetGoodsById(selectedGoods.ID);
+
+            if (updatedGoods.ID == selectedGoods.ID)
+            {
+                var UpdateSaleGoodsWindowScreen = new UpdateSaleGoodsWindow(updatedGoods);
+
+                if (UpdateSaleGoodsWindowScreen.ShowDialog() == true)
+                {
+                    goodsListView1.ItemsSource = busGoods.GetAllGoods();
+                    goodsListView2.ItemsSource = busGoods.GetAllGoods();
+
+                    //
+                    goodsListView3.ItemsSource = busGoods.GetAllGoods();
+                    CollectionView saleView = (CollectionView)CollectionViewSource.GetDefaultView(goodsListView3.ItemsSource);
+                    PropertyGroupDescription groupDescription = new PropertyGroupDescription("ID_Sale");
+                    saleView.GroupDescriptions.Add(groupDescription);
+
+                    //return;
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+
+        private void searchButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (searchTextBox.Text.Length == 0)
+            {
+                return;
+            }
+
+            Good goods = busGoods.GetGoodsByGoodsCode(searchTextBox.Text);
+
+            if (goods.GoodsCode == searchTextBox.Text)
+            {
+                var AddItemsToCartWindowScreen = new AddItemsToCartWindow(goods);
+
+                if (AddItemsToCartWindowScreen.ShowDialog() == true)
+                {
+                    for(int i = 1; i <= AddItemsToCartWindowScreen.Number; i++)
+                    {
+                        _goodsList.Add(goods);
+                    }
+
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            //MessageBox.Show("Không tìm thấy...Vui lòng nhập lại Code!");
+            var AnnouncementWindowScreen = new AnnouncementWindow("DON'T FIND THIS CODE...PLEASE TYPE AGAIN!");
+
+            if (AnnouncementWindowScreen.ShowDialog() == true)
+            {
                 return;
             }
             else

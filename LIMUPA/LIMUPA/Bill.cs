@@ -21,6 +21,9 @@ namespace LIMUPA
         public Nullable<int> ID_Goods { get; set; }
         public Nullable<System.DateTime> DateTime { get; set; }
         public Nullable<double> Total { get; set; }
+        public Nullable<double> VAT { get; set; }
+        public string CustomerAddress { get; set; }
+        public string CustomerPhoneNumber { get; set; }
     
         public virtual Good Good { get; set; }
         public virtual User User { get; set; }
