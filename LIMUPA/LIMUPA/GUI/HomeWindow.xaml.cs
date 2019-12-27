@@ -27,9 +27,11 @@ namespace LIMUPA.GUI
         BUS_Type busType = new BUS_Type();
         BUS_Goods busGoods = new BUS_Goods();
         BUS_Size busSize = new BUS_Size();
+        BUS_Bill busBill = new BUS_Bill();
 
         UserConverter userConverter = new UserConverter();
         BindingList<Good> _goodsList = new BindingList<Good>();
+        private int _userID = -1;
 
         public HomeWindow(int userID, string permisionName)
         {
@@ -41,7 +43,9 @@ namespace LIMUPA.GUI
                 expensesTabItem.Visibility = Visibility.Collapsed;
             }
 
-
+            //Sale
+            _userID = userID;
+            id2TextBlock.Text = busBill.GetNextBillCode();
             staffnameTextBlock.Text = (string)userConverter.Convert(userID, null, null, null);
             goodsListView.ItemsSource = _goodsList;
 
@@ -324,7 +328,12 @@ namespace LIMUPA.GUI
                 {
                     goodsListView1.ItemsSource = busGoods.GetAllGoods();
                     goodsListView2.ItemsSource = busGoods.GetAllGoods();
+
+                    //Grouping goodsListView3
                     goodsListView3.ItemsSource = busGoods.GetAllGoods();
+                    CollectionView saleView = (CollectionView)CollectionViewSource.GetDefaultView(goodsListView3.ItemsSource);
+                    PropertyGroupDescription groupDescription = new PropertyGroupDescription("ID_Sale");
+                    saleView.GroupDescriptions.Add(groupDescription);
 
                     return;
                 }
@@ -343,7 +352,12 @@ namespace LIMUPA.GUI
             {
                 goodsListView1.ItemsSource = busGoods.GetAllGoods();
                 goodsListView2.ItemsSource = busGoods.GetAllGoods();
+
+                //Grouping goodsListView3
                 goodsListView3.ItemsSource = busGoods.GetAllGoods();
+                CollectionView saleView = (CollectionView)CollectionViewSource.GetDefaultView(goodsListView3.ItemsSource);
+                PropertyGroupDescription groupDescription = new PropertyGroupDescription("ID_Sale");
+                saleView.GroupDescriptions.Add(groupDescription);
 
                 return;
             }
@@ -437,6 +451,7 @@ namespace LIMUPA.GUI
                     for(int i = 1; i <= AddItemsToCartWindowScreen.Number; i++)
                     {
                         _goodsList.Add(goods);
+                        PlusCurrentTotal((float)goods.Price);
                     }
 
                     return;
@@ -458,6 +473,113 @@ namespace LIMUPA.GUI
             {
                 return;
             }
+        }
+
+        public void PlusCurrentTotal(float price)
+        {
+            float currentTotal = float.Parse(totalTextBlock.Text);
+            currentTotal += price;
+
+            totalTextBlock.Text = $"{currentTotal}";
+        }
+
+        public void SubstractCurrentTotal(float price)
+        {
+            float currentTotal = float.Parse(totalTextBlock.Text);
+            currentTotal -= price;
+
+            totalTextBlock.Text = $"{currentTotal}";
+        }
+
+
+        private void removeMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var removedGoodsIndex = goodsListView.SelectedIndex;
+
+            if (removedGoodsIndex == -1)
+            {
+                return;
+            }
+
+            var ValidationWindowScreen = new ValidationWindow("REMOVE THIS ITEM");
+
+            if (ValidationWindowScreen.ShowDialog() == true)
+            {
+                SubstractCurrentTotal((float)_goodsList[removedGoodsIndex].Price);
+                _goodsList.RemoveAt(removedGoodsIndex);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void cancelbillButton_Click(object sender, RoutedEventArgs e)
+        {
+            var ValidationWindowScreen = new ValidationWindow("CANCEL THIS BILL");
+
+            if (ValidationWindowScreen.ShowDialog() == true)
+            {
+                customernameTextBox.Text = "";
+                phonenumberTextBox.Text = "";
+                addressTextBox.Text = "";
+                totalTextBlock.Text = "0";
+                cashTextBox.Text = "0";
+                _goodsList.Clear();
+
+                return;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void doneButton_Click(object sender, RoutedEventArgs e)
+        {
+            var PaymentWindowScreen = new PaymentWindow(id2TextBlock.Text, customernameTextBox.Text, phonenumberTextBox.Text, addressTextBox.Text,
+                                                        staffnameTextBlock.Text, _goodsList.ToList(), totalTextBlock.Text);
+
+            if (PaymentWindowScreen.ShowDialog() == true)
+            {
+                for (int i = 0; i < _goodsList.Count; i++)
+                {
+                    Bill newBill = new Bill()
+                    {
+                        BillCode = id2TextBlock.Text,
+                        CustomerName = customernameTextBox.Text,
+                        CustomerPhoneNumber = phonenumberTextBox.Text,
+                        CustomerAddress = addressTextBox.Text,
+                        ID_Staff = _userID,
+                        ID_Goods = _goodsList[i].ID,
+                        DateTime = DateTime.Now.Date,
+                        Total = double.Parse(totalTextBlock.Text),
+                        VAT = 10,
+                    };
+
+                    //Decrease number of this goods
+                    _goodsList[i].Number--;
+                    busGoods.UpdateGoods(_goodsList[i]);
+
+
+                    busBill.AddBill(newBill);
+                }
+
+                //Giống sự kiện cancelbillButton_Click
+                customernameTextBox.Text = "";
+                phonenumberTextBox.Text = "";
+                addressTextBox.Text = "";
+                totalTextBlock.Text = "0";
+                cashTextBox.Text = "0";
+                _goodsList.Clear();
+
+                return;
+            }
+            else
+            {
+                return;
+            }
+
         }
     }
 }

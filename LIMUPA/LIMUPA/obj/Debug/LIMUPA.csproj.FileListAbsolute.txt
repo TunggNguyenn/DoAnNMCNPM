@@ -44,3 +44,5 @@ C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\UpdateSaleGoodsWin
 C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\UpdateSaleGoodsWindow.baml
 C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\AddItemsToCartWindow.g.cs
 C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\AddItemsToCartWindow.baml
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\PaymentWindow.g.cs
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\PaymentWindow.baml

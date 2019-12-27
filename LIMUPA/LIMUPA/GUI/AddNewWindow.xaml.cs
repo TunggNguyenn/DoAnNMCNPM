@@ -65,7 +65,8 @@ namespace LIMUPA.GUI
                 Number = int.Parse(numberTextBox.Text),
                 Import_Date = importDateDatePicker.SelectedDate,
                 Price = double.Parse(priceTextBox.Text),
-                Picture = addedPicture.Source.ToString()
+                Picture = addedPicture.Source.ToString(),
+                ID_Sale = 1
             };
 
             var ValidationWindowScreen = new ValidationWindow("ADD NEW");

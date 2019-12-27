@@ -83,10 +83,12 @@
     <Compile Include="Brand.cs">
       <DependentUpon>MyShopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BUS\BUS_Bill.cs" />
     <Compile Include="BUS\BUS_Sale.cs" />
     <Compile Include="Color.cs">
       <DependentUpon>MyShopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Converter\PaymentConverter.cs" />
     <Compile Include="Converter\SaleConverter.cs" />
     <Compile Include="Converter\UserConverter.cs" />
     <Compile Include="DAL\DAL_Bill.cs" />
@@ -99,6 +101,9 @@
     </Compile>
     <Compile Include="GUI\AddItemsToCartWindow.xaml.cs">
       <DependentUpon>AddItemsToCartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PaymentWindow.xaml.cs">
+      <DependentUpon>PaymentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\SaleGoodsInfoWindow.xaml.cs">
       <DependentUpon>SaleGoodsInfoWindow.xaml</DependentUpon>
@@ -204,6 +209,10 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="GUI\PaymentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\SaleGoodsInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

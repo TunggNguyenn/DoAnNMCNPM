@@ -59,6 +59,7 @@ namespace LIMUPA.DAL
             }
         }
 
+
         public void UpdateSaleGoods(Good info)
         {
             //Xác định đối tượng cần cập nhật
