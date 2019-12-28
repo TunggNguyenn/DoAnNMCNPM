@@ -167,7 +167,11 @@
 
 
                                 <Grid Grid.Row="1">
-                                    <ListView x:Name="goodsListView">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="365*"/>
+                                        <ColumnDefinition Width="159*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ListView x:Name="goodsListView" Grid.ColumnSpan="2">
                                         <ListView.ContextMenu>
                                             <ContextMenu StaysOpen="True" Background="WhiteSmoke">
                                                 <ContextMenu.BitmapEffect>
@@ -188,30 +192,35 @@
                                                         <GridViewColumnHeader Tag="GoodsName" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="NAME"/>
                                                     </GridViewColumn.Header>
                                                 </GridViewColumn>
-                                                <GridViewColumn Width="100" DisplayMemberBinding="{Binding ID_Color}">
+                                                <GridViewColumn Width="80" DisplayMemberBinding="{Binding ID_Color, Converter={StaticResource colorConverter}}">
                                                     <GridViewColumn.Header>
-                                                        <GridViewColumnHeader Tag="Number" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="COLOR"/>
+                                                        <GridViewColumnHeader Tag="Color" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="COLOR"/>
                                                     </GridViewColumn.Header>
                                                 </GridViewColumn>
-                                                <GridViewColumn Width="200" DisplayMemberBinding="{Binding ID_Brand}">
+                                                <GridViewColumn Width="150" DisplayMemberBinding="{Binding ID_Brand, Converter={StaticResource brandConverter}}">
                                                     <GridViewColumn.Header>
                                                         <GridViewColumnHeader Tag="Brand" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="BRAND"/>
                                                     </GridViewColumn.Header>
                                                 </GridViewColumn>
-                                                <GridViewColumn Width="120" DisplayMemberBinding="{Binding Price}">
+                                                <GridViewColumn Width="100" DisplayMemberBinding="{Binding Price}">
                                                     <GridViewColumn.Header>
                                                         <GridViewColumnHeader Tag="Price" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="PRICE (VNĐ)"/>
                                                     </GridViewColumn.Header>
                                                 </GridViewColumn>
-                                                <GridViewColumn Width="280">
+                                                <GridViewColumn Width="180">
                                                     <GridViewColumn.Header>
                                                         <GridViewColumnHeader Tag="Picture" FontWeight="Bold" Foreground="Red" Content="PICTURE"/>
                                                     </GridViewColumn.Header>
                                                     <GridViewColumn.CellTemplate>
                                                         <DataTemplate>
-                                                            <Image Margin="50,0,0,0" Source="{Binding Picture}" Height="150" Width="150"/>
+                                                            <Image Margin="50,0,0,0" Source="{Binding Picture}" Height="50" Width="50"/>
                                                         </DataTemplate>
                                                     </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                                <GridViewColumn Width="200" DisplayMemberBinding="{Binding ID_Sale, Converter={StaticResource saleConverter}}">
+                                                    <GridViewColumn.Header>
+                                                        <GridViewColumnHeader Tag="Sale" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="SALE"/>
+                                                    </GridViewColumn.Header>
                                                 </GridViewColumn>
                                             </GridView>
                                         </ListView.View>
@@ -507,20 +516,15 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
-                        <Button x:Name="addNewSaleButton" Height="40" Background="Green" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Width="180" Content="ADD NEW SALE"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button x:Name="addNewSaleButton" Click="addNewSaleButton_Click" Height="40" Background="Green" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Width="180" Content="ADD NEW SALE"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="159,2,222,2">
                             <TextBox x:Name="searchTextBox3" Text="" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
                             <Button x:Name="searchButton3" Click="searchButton3_Click" BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" Content="SEARCH" FontSize="20"/>
                         </StackPanel>
                     </Grid>
 
-                    <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="98*"/>
-                            <ColumnDefinition Width="385*"/>
-                            <ColumnDefinition Width="271*"/>
-                        </Grid.ColumnDefinitions>
-                        <ListView x:Name="goodsListView3"  MouseDoubleClick="goodsListView3_MouseDoubleClick" Grid.ColumnSpan="3" Margin="-10,0,10,0">
+                    <Grid Grid.Row="1">
+                        <ListView x:Name="goodsListView3"  MouseDoubleClick="goodsListView3_MouseDoubleClick" Margin="0,0,10,0">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding GoodsCode}">
@@ -594,6 +598,165 @@
                         <TextBlock Text="EXPENSES"/>
                     </StackPanel>
                 </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Button x:Name="addNewExpensesButton" Click="addNewSaleButton_Click" Height="40" Background="Green" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Width="180" Content="ADD NEW EXPENSES" Grid.ColumnSpan="2"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="159,2,222,2">
+                                <TextBox x:Name="searchTextBox4" Text="" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
+                                <Button x:Name="searchButton4" Click="searchButton3_Click" BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" Content="SEARCH" FontSize="20"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Border Grid.Row="1" CornerRadius="6" BorderBrush="Blue" BorderThickness="5">
+                            <Grid>
+                                <ListView x:Name="goodsListView4"  MouseDoubleClick="goodsListView3_MouseDoubleClick" Margin="0,0,10,0">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Width="100" DisplayMemberBinding="{Binding DateTime}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="DateTime" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="DateTime"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="160" DisplayMemberBinding="{Binding Electric}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="Electric" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="ELECTRIC"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="160" DisplayMemberBinding="{Binding Water}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="Water" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="WATER"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="160" DisplayMemberBinding="{Binding Rent_Premises}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="RentPremises" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="RENT PREMISES"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="160" DisplayMemberBinding="{Binding SalaryStaff}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="SalaryStaff" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="SALARY STAFF"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="160" DisplayMemberBinding="{Binding Total}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="Total" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="TOTAL"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListView.GroupStyle>
+                                        <GroupStyle>
+                                            <GroupStyle.ContainerStyle>
+                                                <Style TargetType="{x:Type GroupItem}">
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate>
+                                                                <Expander IsExpanded="False">
+                                                                    <Expander.Header>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock Text="{Binding Name,  Converter={StaticResource saleConverter}}" FontWeight="Bold" Foreground="Gray" FontSize="22" VerticalAlignment="Bottom" />
+                                                                            <TextBlock Text="{Binding ItemCount}" FontSize="22" Foreground="Green" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" VerticalAlignment="Bottom" />
+                                                                            <TextBlock Text=" item(s)" FontSize="22" Foreground="Silver" FontStyle="Italic" VerticalAlignment="Bottom" />
+                                                                        </StackPanel>
+                                                                    </Expander.Header>
+                                                                    <ItemsPresenter />
+                                                                </Expander>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </GroupStyle.ContainerStyle>
+                                        </GroupStyle>
+                                    </ListView.GroupStyle>
+                                </ListView>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <Border Grid.Column="1" CornerRadius="6" BorderBrush="Black" BorderThickness="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                            </Grid.RowDefinitions>
+
+                            <Border Grid.Row="0" CornerRadius="6" BorderBrush="Blue" BorderThickness="5">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Label>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Images/summary.png" RenderOptions.BitmapScalingMode="HighQuality" Width="40" Height="40"/>
+                                            <TextBlock Text="SUMMARY"  Margin="5,0,0,0" Foreground="Red" FontWeight="Bold"/>
+                                        </StackPanel>
+                                    </Label>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Grid.Row="1" Margin="5,5,5,5" CornerRadius="6" BorderBrush="Green" BorderThickness="5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2.5*"/>
+                                        <RowDefinition Height="2.5*"/>
+                                        <RowDefinition Height="2.5*"/>
+                                        <RowDefinition Height="2.5*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Text="REVENUE: " VerticalAlignment="Center" Margin="5,0,0,0" Foreground="DarkViolet" FontSize="20" FontWeight="Bold"/>
+
+                                    <StackPanel Grid.Row="1"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Button Content="DAY" Width="100" Height="40" FontWeight="Bold"/>
+                                        <DatePicker Width="180" Height="40" FontSize="30" Foreground="Blue" Margin="5,0,0,0"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="2"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Button Content="MONTH" Width="100" Height="40" FontWeight="Bold"/>
+                                        <TextBlock Text="YEAR: " Width="100" Height="40" FontSize="30" Foreground="Red" Margin="10,0,0,0"/>
+                                        <TextBox Width="60" TextAlignment="Center" Height="40" FontSize="30" Foreground="Blue" Margin="15,0,0,0"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="3"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Button Content="YEAR" Width="100" Height="40" FontWeight="Bold"/>
+                                        <TextBlock Text="(FROM 2010 TO NOW)" Width="180" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Red" Margin="5,0,0,0"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                            <Border Grid.Row="2" Margin="5,5,5,5" CornerRadius="6" BorderBrush="Green" BorderThickness="5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="3*"/>
+                                        <RowDefinition Height="3*"/>
+                                        <RowDefinition Height="3*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Text="PROFIT: " VerticalAlignment="Center" Margin="5,0,0,0" Foreground="DarkViolet" FontSize="20" FontWeight="Bold"/>
+
+                                    <StackPanel Grid.Row="1"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Button Content="MONTH" Width="100" Height="40" FontWeight="Bold"/>
+                                        <TextBlock Text="YEAR: " Width="100" Height="40" FontSize="30" Foreground="Red" Margin="10,0,0,0"/>
+                                        <TextBox Width="60" TextAlignment="Center" Height="40" FontSize="30" Foreground="Blue" Margin="15,0,0,0"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="2"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Button Content="YEAR" Width="100" Height="40" FontWeight="Bold"/>
+                                        <TextBlock Text="(FROM 2010 TO NOW)" Width="180" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Red" Margin="5,0,0,0"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

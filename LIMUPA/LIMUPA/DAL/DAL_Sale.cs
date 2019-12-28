@@ -12,5 +12,10 @@ namespace LIMUPA.DAL
         {
             return db.Sales.ToList();
         }
+
+        public Sale GetSaleByID(int id)
+        {
+            return db.Sales.Find(id);
+        }
     }
 }

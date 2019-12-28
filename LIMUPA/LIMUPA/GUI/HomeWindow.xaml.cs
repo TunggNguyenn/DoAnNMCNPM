@@ -28,6 +28,7 @@ namespace LIMUPA.GUI
         BUS_Goods busGoods = new BUS_Goods();
         BUS_Size busSize = new BUS_Size();
         BUS_Bill busBill = new BUS_Bill();
+        BUS_Sale busSale = new BUS_Sale();
 
         UserConverter userConverter = new UserConverter();
         BindingList<Good> _goodsList = new BindingList<Good>();
@@ -451,7 +452,7 @@ namespace LIMUPA.GUI
                     for(int i = 1; i <= AddItemsToCartWindowScreen.Number; i++)
                     {
                         _goodsList.Add(goods);
-                        PlusCurrentTotal((float)goods.Price);
+                        PlusCurrentTotal((float)goods.Price, (int)goods.ID_Sale);
                     }
 
                     return;
@@ -475,10 +476,13 @@ namespace LIMUPA.GUI
             }
         }
 
-        public void PlusCurrentTotal(float price)
+        public void PlusCurrentTotal(float price, int id_Sale)
         {
+            int percentageSale = busSale.GetPercentageByIDSale(id_Sale);
+
             float currentTotal = float.Parse(totalTextBlock.Text);
             currentTotal += price;
+            currentTotal -= (float)(price * (float)percentageSale / 100);
 
             totalTextBlock.Text = $"{currentTotal}";
         }
@@ -566,6 +570,7 @@ namespace LIMUPA.GUI
                 }
 
                 //Giống sự kiện cancelbillButton_Click
+                id2TextBlock.Text = busBill.GetNextBillCode();
                 customernameTextBox.Text = "";
                 phonenumberTextBox.Text = "";
                 addressTextBox.Text = "";
@@ -580,6 +585,29 @@ namespace LIMUPA.GUI
                 return;
             }
 
+        }
+
+        private void addNewSaleButton_Click(object sender, RoutedEventArgs e)
+        {
+            var AddNewSaleWindowScreen = new AddNewSaleWindow(goodsListView1, goodsListView2, goodsListView3);
+
+            if (AddNewSaleWindowScreen.ShowDialog() == true)
+            {
+                goodsListView1.ItemsSource = busGoods.GetAllGoods();
+                goodsListView2.ItemsSource = busGoods.GetAllGoods();
+
+                //Grouping goodsListView3
+                goodsListView3.ItemsSource = busGoods.GetAllGoods();
+                CollectionView saleView = (CollectionView)CollectionViewSource.GetDefaultView(goodsListView3.ItemsSource);
+                PropertyGroupDescription groupDescription = new PropertyGroupDescription("ID_Sale");
+                saleView.GroupDescriptions.Add(groupDescription);
+
+                return;
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

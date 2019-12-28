@@ -36,6 +36,7 @@
     <EntitySetMapping Name="Expenses">
       <EntityTypeMapping TypeName="MyShop_SQLServerModel.Expens">
         <MappingFragment StoreEntitySet="Expenses">
+          <ScalarProperty Name="SalaryStaff" ColumnName="SalaryStaff" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Electric" ColumnName="Electric" />
           <ScalarProperty Name="Water" ColumnName="Water" />

@@ -20,5 +20,6 @@ namespace LIMUPA
         public Nullable<double> Rent_Premises { get; set; }
         public Nullable<System.DateTime> DateTime { get; set; }
         public Nullable<double> Total { get; set; }
+        public Nullable<double> SalaryStaff { get; set; }
     }
 }

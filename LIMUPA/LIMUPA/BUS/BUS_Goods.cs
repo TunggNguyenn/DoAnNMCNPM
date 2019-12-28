@@ -46,6 +46,22 @@ namespace LIMUPA.BUS
             dalGoods.DeleteSaleGoods(info);
         }
 
+        public List<Good> GetGoodsByImportDate(DateTime importDate, DateTime nowDate)
+        {
+            List<Good> goods = GetAllGoods();
+
+            for(int i = 0; i < goods.Count; i++)
+            {
+                if(!(goods[i].Import_Date >= importDate && goods[i].Import_Date <= nowDate))
+                {
+                    goods.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            return goods;
+
+        }
 
         public Good GetGoodsByGoodsCode(string goodsCode)
         {

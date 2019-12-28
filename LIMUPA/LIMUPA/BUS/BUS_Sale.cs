@@ -15,5 +15,17 @@ namespace LIMUPA.BUS
         {
             return dalSale.GetAllSales();
         }
+
+        public Sale GetSaleByID(int id)
+        {
+            return dalSale.GetSaleByID(id);
+        }
+
+        public int GetPercentageByIDSale(int id)
+        {
+            Sale sale = GetSaleByID(id);
+
+            return sale.PercentageSale.Value;
+        }
     }
 }

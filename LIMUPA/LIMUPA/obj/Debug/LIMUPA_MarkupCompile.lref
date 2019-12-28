@@ -1,6 +1,7 @@
 ﻿
 FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\App.xaml;;
 FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\AddItemsToCartWindow.xaml;;
+FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\AddNewSaleWindow.xaml;;
 FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\AddNewWindow.xaml;;
 FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\AnnouncementWindow.xaml;;
 FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\GoodsInformationWindow.xaml;;
@@ -8,6 +9,8 @@ FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\HomeWindow.xaml;;
 FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\LoginWindow.xaml;;
 FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\PaymentWindow.xaml;;
 FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\SaleGoodsInfoWindow.xaml;;
+FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\SaleItemsWindow.xaml;;
+FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\SaleWindow.xaml;;
 FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\UpdateSaleGoodsWindow.xaml;;
 FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\UpdateWindow.xaml;;
 FC:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\ValidationWindow.xaml;;

@@ -43,6 +43,7 @@
           <Property Name="Water" Type="float" />
           <Property Name="Rent_Premises" Type="float" />
           <Property Name="DateTime" Type="datetime" />
+          <Property Name="SalaryStaff" Type="float" />
           <Property Name="Total" Type="float" />
         </EntityType>
         <EntityType Name="Goods">
@@ -351,6 +352,7 @@
           <Property Name="Rent_Premises" Type="Double" />
           <Property Name="DateTime" Type="DateTime" Precision="3" />
           <Property Name="Total" Type="Double" />
+          <Property Name="SalaryStaff" Type="Double" />
         </EntityType>
         <EntityType Name="Good">
           <Key>
@@ -668,6 +670,7 @@
           <EntitySetMapping Name="Expenses">
             <EntityTypeMapping TypeName="MyShop_SQLServerModel.Expens">
               <MappingFragment StoreEntitySet="Expenses">
+                <ScalarProperty Name="SalaryStaff" ColumnName="SalaryStaff" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Electric" ColumnName="Electric" />
                 <ScalarProperty Name="Water" ColumnName="Water" />

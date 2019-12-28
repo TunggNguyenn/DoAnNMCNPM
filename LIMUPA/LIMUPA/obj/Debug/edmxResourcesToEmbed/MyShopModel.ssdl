@@ -38,6 +38,7 @@
     <Property Name="Water" Type="float" />
     <Property Name="Rent_Premises" Type="float" />
     <Property Name="DateTime" Type="datetime" />
+    <Property Name="SalaryStaff" Type="float" />
     <Property Name="Total" Type="float" />
   </EntityType>
   <EntityType Name="Goods">

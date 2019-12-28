@@ -134,29 +134,34 @@
                                     <GridViewColumnHeader Tag="GoodsName" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="NAME"/>
                                 </GridViewColumn.Header>
                             </GridViewColumn>
-                            <GridViewColumn Width="100" DisplayMemberBinding="{Binding ID_Color}">
+                            <GridViewColumn Width="100" DisplayMemberBinding="{Binding ID_Color, Converter={StaticResource colorConverter}}">
                                 <GridViewColumn.Header>
-                                    <GridViewColumnHeader Tag="Number" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="COLOR"/>
+                                    <GridViewColumnHeader Tag="Color" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="COLOR"/>
                                 </GridViewColumn.Header>
                             </GridViewColumn>
-                            <GridViewColumn Width="200" DisplayMemberBinding="{Binding ID_Brand}">
+                            <GridViewColumn Width="180" DisplayMemberBinding="{Binding ID_Brand, Converter={StaticResource brandConverter}}">
                                 <GridViewColumn.Header>
                                     <GridViewColumnHeader Tag="Brand" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="BRAND"/>
                                 </GridViewColumn.Header>
                             </GridViewColumn>
-                            <GridViewColumn Width="100" DisplayMemberBinding="{Binding ID_Size}">
+                            <GridViewColumn Width="50" DisplayMemberBinding="{Binding ID_Size, Converter={StaticResource sizeConverter}}">
                                 <GridViewColumn.Header>
-                                    <GridViewColumnHeader Tag="Number" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="SIZE"/>
+                                    <GridViewColumnHeader Tag="Size" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="SIZE"/>
                                 </GridViewColumn.Header>
                             </GridViewColumn>
-                            <GridViewColumn Width="100" DisplayMemberBinding="{Binding ID_Type}">
+                            <GridViewColumn Width="80" DisplayMemberBinding="{Binding ID_Type, Converter={StaticResource typeConverter}}">
                                 <GridViewColumn.Header>
-                                    <GridViewColumnHeader Tag="Number" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="TYPE"/>
+                                    <GridViewColumnHeader Tag="Type" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="TYPE"/>
                                 </GridViewColumn.Header>
                             </GridViewColumn>
                             <GridViewColumn Width="120" DisplayMemberBinding="{Binding Price}">
                                 <GridViewColumn.Header>
                                     <GridViewColumnHeader Tag="Price" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="PRICE (VNĐ)"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                            <GridViewColumn Width="200" DisplayMemberBinding="{Binding ID_Sale, Converter={StaticResource saleConverter}}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="Sale" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="SALE"/>
                                 </GridViewColumn.Header>
                             </GridViewColumn>
                         </GridView>
