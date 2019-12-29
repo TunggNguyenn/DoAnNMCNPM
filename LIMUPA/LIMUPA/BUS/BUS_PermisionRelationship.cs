@@ -19,7 +19,7 @@ namespace LIMUPA.BUS
             {
                 if (permisionrelationships[i].ID_User == userID)
                 {
-                    return permisionrelationships[i].ID_Permision;
+                    return permisionrelationships[i].ID_Permission;
                 }
             }
 

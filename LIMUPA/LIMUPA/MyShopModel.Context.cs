@@ -30,9 +30,8 @@ namespace LIMUPA
         public virtual DbSet<Color> Colors { get; set; }
         public virtual DbSet<Expens> Expenses { get; set; }
         public virtual DbSet<Good> Goods { get; set; }
-        public virtual DbSet<Permision> Permisions { get; set; }
-        public virtual DbSet<PermisionDetail> PermisionDetails { get; set; }
         public virtual DbSet<PermisionRelationship> PermisionRelationships { get; set; }
+        public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<Size> Sizes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }

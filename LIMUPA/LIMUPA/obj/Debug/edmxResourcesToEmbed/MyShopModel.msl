@@ -4,9 +4,6 @@
     <EntitySetMapping Name="Bills">
       <EntityTypeMapping TypeName="MyShop_SQLServerModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
-          <ScalarProperty Name="CustomerPhoneNumber" ColumnName="CustomerPhoneNumber" />
-          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
-          <ScalarProperty Name="VAT" ColumnName="VAT" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="BillCode" ColumnName="BillCode" />
           <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
@@ -14,6 +11,9 @@
           <ScalarProperty Name="ID_Goods" ColumnName="ID_Goods" />
           <ScalarProperty Name="DateTime" ColumnName="DateTime" />
           <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="VAT" ColumnName="VAT" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="CustomerPhoneNumber" ColumnName="CustomerPhoneNumber" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -36,12 +36,13 @@
     <EntitySetMapping Name="Expenses">
       <EntityTypeMapping TypeName="MyShop_SQLServerModel.Expens">
         <MappingFragment StoreEntitySet="Expenses">
-          <ScalarProperty Name="SalaryStaff" ColumnName="SalaryStaff" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Electric" ColumnName="Electric" />
           <ScalarProperty Name="Water" ColumnName="Water" />
           <ScalarProperty Name="Rent_Premises" ColumnName="Rent_Premises" />
           <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="SalaryStaff" ColumnName="SalaryStaff" />
+          <ScalarProperty Name="Goods" ColumnName="Goods" />
           <ScalarProperty Name="Total" ColumnName="Total" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -64,32 +65,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Permisions">
-      <EntityTypeMapping TypeName="MyShop_SQLServerModel.Permision">
-        <MappingFragment StoreEntitySet="Permision">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NamePermisson" ColumnName="NamePermisson" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PermisionDetails">
-      <EntityTypeMapping TypeName="MyShop_SQLServerModel.PermisionDetail">
-        <MappingFragment StoreEntitySet="PermisionDetail">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NameAction" ColumnName="NameAction" />
-          <ScalarProperty Name="CodeAction" ColumnName="CodeAction" />
-          <ScalarProperty Name="ID_Permision" ColumnName="ID_Permision" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PermisionRelationships">
       <EntityTypeMapping TypeName="MyShop_SQLServerModel.PermisionRelationship">
         <MappingFragment StoreEntitySet="PermisionRelationship">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_User" ColumnName="ID_User" />
-          <ScalarProperty Name="ID_Permision" ColumnName="ID_Permision" />
+          <ScalarProperty Name="ID_Permission" ColumnName="ID_Permission" />
           <ScalarProperty Name="Suspended" ColumnName="Suspended" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="MyShop_SQLServerModel.Permission">
+        <MappingFragment StoreEntitySet="Permission">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NamePermission" ColumnName="NamePermission" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

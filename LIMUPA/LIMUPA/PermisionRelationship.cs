@@ -16,10 +16,10 @@ namespace LIMUPA
     {
         public int ID { get; set; }
         public int ID_User { get; set; }
-        public int ID_Permision { get; set; }
+        public int ID_Permission { get; set; }
         public Nullable<bool> Suspended { get; set; }
     
-        public virtual Permision Permision { get; set; }
+        public virtual Permission Permission { get; set; }
         public virtual User User { get; set; }
     }
 }

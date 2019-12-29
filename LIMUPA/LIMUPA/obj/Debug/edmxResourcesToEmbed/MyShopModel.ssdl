@@ -39,6 +39,7 @@
     <Property Name="Rent_Premises" Type="float" />
     <Property Name="DateTime" Type="datetime" />
     <Property Name="SalaryStaff" Type="float" />
+    <Property Name="Goods" Type="float" />
     <Property Name="Total" Type="float" />
   </EntityType>
   <EntityType Name="Goods">
@@ -58,31 +59,22 @@
     <Property Name="Import_Date" Type="datetime" />
     <Property Name="ID_Sale" Type="int" />
   </EntityType>
-  <EntityType Name="Permision">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NamePermisson" Type="ntext" />
-    <Property Name="Description" Type="ntext" />
-  </EntityType>
-  <EntityType Name="PermisionDetail">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NameAction" Type="ntext" />
-    <Property Name="CodeAction" Type="ntext" />
-    <Property Name="ID_Permision" Type="int" />
-  </EntityType>
   <EntityType Name="PermisionRelationship">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_User" Type="int" Nullable="false" />
-    <Property Name="ID_Permision" Type="int" Nullable="false" />
+    <Property Name="ID_Permission" Type="int" Nullable="false" />
     <Property Name="Suspended" Type="bit" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NamePermission" Type="ntext" />
+    <Property Name="Description" Type="ntext" />
   </EntityType>
   <EntityType Name="Sale">
     <Key>
@@ -209,27 +201,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PermisionDetail_PermisionDetail">
-    <End Role="Permision" Type="Self.Permision" Multiplicity="0..1" />
-    <End Role="PermisionDetail" Type="Self.PermisionDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Permision">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="PermisionDetail">
-        <PropertyRef Name="ID_Permision" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PermisionRelationship_Permision1">
-    <End Role="Permision" Type="Self.Permision" Multiplicity="1" />
+  <Association Name="FK_PermisionRelationship_Permission">
+    <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
     <End Role="PermisionRelationship" Type="Self.PermisionRelationship" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Permision">
+      <Principal Role="Permission">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="PermisionRelationship">
-        <PropertyRef Name="ID_Permision" />
+        <PropertyRef Name="ID_Permission" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -251,9 +231,8 @@
     <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Permision" EntityType="Self.Permision" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PermisionDetail" EntityType="Self.PermisionDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PermisionRelationship" EntityType="Self.PermisionRelationship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -287,12 +266,8 @@
       <End Role="Type" EntitySet="Type" />
       <End Role="Goods" EntitySet="Goods" />
     </AssociationSet>
-    <AssociationSet Name="FK_PermisionDetail_PermisionDetail" Association="Self.FK_PermisionDetail_PermisionDetail">
-      <End Role="Permision" EntitySet="Permision" />
-      <End Role="PermisionDetail" EntitySet="PermisionDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PermisionRelationship_Permision1" Association="Self.FK_PermisionRelationship_Permision1">
-      <End Role="Permision" EntitySet="Permision" />
+    <AssociationSet Name="FK_PermisionRelationship_Permission" Association="Self.FK_PermisionRelationship_Permission">
+      <End Role="Permission" EntitySet="Permission" />
       <End Role="PermisionRelationship" EntitySet="PermisionRelationship" />
     </AssociationSet>
     <AssociationSet Name="FK_PermisionRelationship_User" Association="Self.FK_PermisionRelationship_User">

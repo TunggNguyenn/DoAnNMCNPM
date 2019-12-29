@@ -13,17 +13,22 @@ namespace LIMUPA.BUS
 
         public string GetNamePermision(int permisionID)
         {
-            List<Permision> permisions = dalPermision.GetAllPermisions();
+            List<Permission> permisions = dalPermision.GetAllPermisions();
 
             for(int i = 0; i < permisions.Count; i++)
             {
                 if(permisions[i].ID == permisionID)
                 {
-                    return permisions[i].NamePermisson;
+                    return permisions[i].NamePermission;
                 }
             }
 
             return "";
+        }
+
+        public Permission GetPermissionById(int id)
+        {
+            return dalPermision.GetPermissionById(id);
         }
     }
 }

@@ -28,6 +28,9 @@
             </StatusBarItem>
             <StatusBarItem HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal">
+                    <Button x:Name="settingButton" Click="settingButton_Click" Margin="0,0,5,0" Background="Blue" Height="34">
+                        <Image Source="/Images/setting.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Button>
                     <Button x:Name="logoutButton" Click="logoutButton_Click" Margin="0,0,5,0" Background="Blue" Height="34">
                         <Image Source="/Images/logout.png" RenderOptions.BitmapScalingMode="HighQuality"/>
                     </Button>
@@ -254,7 +257,10 @@
                                     </TextBlock>
                                     <TextBlock Text="(VNĐ)" TextAlignment="Center" Margin="10,0,0,0" FontSize="20" Foreground="Red" FontWeight="Bold"/>
                                 </StackPanel>
-                                <StackPanel Margin="0,420,20,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <StackPanel Height="375" Margin="0,20,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Calendar BorderBrush="Red" BorderThickness="2"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,25,20,0" Orientation="Horizontal" HorizontalAlignment="Right">
                                     <Button x:Name="cancelbillButton" Click="cancelbillButton_Click" Width="60" Height="40" Margin="0,0,20,0">
                                         <StackPanel>
                                             <Image Source="/Images/trash.png" Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -611,16 +617,31 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
-                            <Button x:Name="addNewExpensesButton" Click="addNewSaleButton_Click" Height="40" Background="Green" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Width="180" Content="ADD NEW EXPENSES" Grid.ColumnSpan="2"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="159,2,222,2">
-                                <TextBox x:Name="searchTextBox4" Text="" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
-                                <Button x:Name="searchButton4" Click="searchButton3_Click" BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" Content="SEARCH" FontSize="20"/>
-                            </StackPanel>
+                            <Button x:Name="addNewExpensesButton" Click="addNewExpensesButton_Click" Height="40" Background="Green" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Width="180" Content="ADD NEW EXPENSES" Grid.ColumnSpan="2"/>
+                            <Border Grid.Row="0" Margin="180,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="6" BorderBrush="Blue" BorderThickness="5">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Label>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Images/analysis.png" RenderOptions.BitmapScalingMode="HighQuality" Width="40" Height="40"/>
+                                            <TextBlock Text="EXPENSES"  Margin="5,0,0,0" Foreground="Red" FontWeight="Bold"/>
+                                        </StackPanel>
+                                    </Label>
+                                </StackPanel>
+                            </Border>
                         </Grid>
 
                         <Border Grid.Row="1" CornerRadius="6" BorderBrush="Blue" BorderThickness="5">
                             <Grid>
-                                <ListView x:Name="goodsListView4"  MouseDoubleClick="goodsListView3_MouseDoubleClick" Margin="0,0,10,0">
+                                <ListView x:Name="goodsListView4" Margin="0,0,10,0">
+                                    <ListView.ContextMenu>
+                                        <ContextMenu StaysOpen="True" Background="WhiteSmoke">
+                                            <ContextMenu.BitmapEffect>
+                                                <BitmapEffectGroup/>
+                                            </ContextMenu.BitmapEffect>
+                                            <MenuItem x:Name="editMenuItem" Header="EDIT" Click="editMenuItem_Click"/>
+                                            <MenuItem x:Name="deleteMenuItem" Header="DELETE" Click="deleteMenuItem_Click"/>
+                                        </ContextMenu>
+                                    </ListView.ContextMenu>
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn Width="100" DisplayMemberBinding="{Binding DateTime}">
@@ -628,57 +649,38 @@
                                                     <GridViewColumnHeader Tag="DateTime" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="DateTime"/>
                                                 </GridViewColumn.Header>
                                             </GridViewColumn>
-                                            <GridViewColumn Width="160" DisplayMemberBinding="{Binding Electric}">
+                                            <GridViewColumn Width="140" DisplayMemberBinding="{Binding Electric}">
                                                 <GridViewColumn.Header>
                                                     <GridViewColumnHeader Tag="Electric" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="ELECTRIC"/>
                                                 </GridViewColumn.Header>
                                             </GridViewColumn>
-                                            <GridViewColumn Width="160" DisplayMemberBinding="{Binding Water}">
+                                            <GridViewColumn Width="140" DisplayMemberBinding="{Binding Water}">
                                                 <GridViewColumn.Header>
                                                     <GridViewColumnHeader Tag="Water" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="WATER"/>
                                                 </GridViewColumn.Header>
                                             </GridViewColumn>
-                                            <GridViewColumn Width="160" DisplayMemberBinding="{Binding Rent_Premises}">
+                                            <GridViewColumn Width="140" DisplayMemberBinding="{Binding Rent_Premises}">
                                                 <GridViewColumn.Header>
                                                     <GridViewColumnHeader Tag="RentPremises" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="RENT PREMISES"/>
                                                 </GridViewColumn.Header>
                                             </GridViewColumn>
-                                            <GridViewColumn Width="160" DisplayMemberBinding="{Binding SalaryStaff}">
+                                            <GridViewColumn Width="140" DisplayMemberBinding="{Binding SalaryStaff}">
                                                 <GridViewColumn.Header>
                                                     <GridViewColumnHeader Tag="SalaryStaff" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="SALARY STAFF"/>
                                                 </GridViewColumn.Header>
                                             </GridViewColumn>
-                                            <GridViewColumn Width="160" DisplayMemberBinding="{Binding Total}">
+                                            <GridViewColumn Width="140" DisplayMemberBinding="{Binding Goods}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="Goods" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="GOODS"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="140" DisplayMemberBinding="{Binding Total}">
                                                 <GridViewColumn.Header>
                                                     <GridViewColumnHeader Tag="Total" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="TOTAL"/>
                                                 </GridViewColumn.Header>
                                             </GridViewColumn>
                                         </GridView>
                                     </ListView.View>
-                                    <ListView.GroupStyle>
-                                        <GroupStyle>
-                                            <GroupStyle.ContainerStyle>
-                                                <Style TargetType="{x:Type GroupItem}">
-                                                    <Setter Property="Template">
-                                                        <Setter.Value>
-                                                            <ControlTemplate>
-                                                                <Expander IsExpanded="False">
-                                                                    <Expander.Header>
-                                                                        <StackPanel Orientation="Horizontal">
-                                                                            <TextBlock Text="{Binding Name,  Converter={StaticResource saleConverter}}" FontWeight="Bold" Foreground="Gray" FontSize="22" VerticalAlignment="Bottom" />
-                                                                            <TextBlock Text="{Binding ItemCount}" FontSize="22" Foreground="Green" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" VerticalAlignment="Bottom" />
-                                                                            <TextBlock Text=" item(s)" FontSize="22" Foreground="Silver" FontStyle="Italic" VerticalAlignment="Bottom" />
-                                                                        </StackPanel>
-                                                                    </Expander.Header>
-                                                                    <ItemsPresenter />
-                                                                </Expander>
-                                                            </ControlTemplate>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                </Style>
-                                            </GroupStyle.ContainerStyle>
-                                        </GroupStyle>
-                                    </ListView.GroupStyle>
                                 </ListView>
                             </Grid>
                         </Border>
@@ -715,19 +717,19 @@
                                     <TextBlock Grid.Row="0" Text="REVENUE: " VerticalAlignment="Center" Margin="5,0,0,0" Foreground="DarkViolet" FontSize="20" FontWeight="Bold"/>
 
                                     <StackPanel Grid.Row="1"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                                        <Button Content="DAY" Width="100" Height="40" FontWeight="Bold"/>
-                                        <DatePicker Width="180" Height="40" FontSize="30" Foreground="Blue" Margin="5,0,0,0"/>
+                                        <Button x:Name="daylyrevenueBtn" Click="daylyrevenueBtn_Click" Content="DAY" Width="100" Height="40" FontWeight="Bold"/>
+                                        <DatePicker x:Name="dayrevenueDatePicker" Width="180" Height="40" FontSize="30" Foreground="Blue" Margin="5,0,0,0"/>
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="2"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                                        <Button Content="MONTH" Width="100" Height="40" FontWeight="Bold"/>
-                                        <TextBlock Text="YEAR: " Width="100" Height="40" FontSize="30" Foreground="Red" Margin="10,0,0,0"/>
-                                        <TextBox Width="60" TextAlignment="Center" Height="40" FontSize="30" Foreground="Blue" Margin="15,0,0,0"/>
+                                        <Button x:Name="monthlyrevenueBtn" Click="monthlyrevenueBtn_Click" Content="MONTH"  Width="100" Height="40" FontWeight="Bold"/>
+                                        <TextBlock  Text="YEAR: " Width="80" Height="40" FontSize="30" Foreground="Red" Margin="10,0,0,0"/>
+                                        <TextBox x:Name="monthrevenueTextBox" Width="80" TextAlignment="Center" Height="40" FontSize="30" Foreground="Blue" Margin="15,0,0,0"/>
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="3"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                                        <Button Content="YEAR" Width="100" Height="40" FontWeight="Bold"/>
-                                        <TextBlock Text="(FROM 2010 TO NOW)" Width="180" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Red" Margin="5,0,0,0"/>
+                                        <Button x:Name="yearlyrevenueBtn" Click="yearlyrevenueBtn_Click" Content="YEAR"  Width="100" Height="40" FontWeight="Bold"/>
+                                        <TextBlock Text="(FROM 2015 TO NOW)" Width="180" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Red" Margin="5,0,0,0"/>
                                     </StackPanel>
                                 </Grid>
                             </Border>
@@ -743,14 +745,14 @@
                                     <TextBlock Grid.Row="0" Text="PROFIT: " VerticalAlignment="Center" Margin="5,0,0,0" Foreground="DarkViolet" FontSize="20" FontWeight="Bold"/>
 
                                     <StackPanel Grid.Row="1"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                                        <Button Content="MONTH" Width="100" Height="40" FontWeight="Bold"/>
-                                        <TextBlock Text="YEAR: " Width="100" Height="40" FontSize="30" Foreground="Red" Margin="10,0,0,0"/>
-                                        <TextBox Width="60" TextAlignment="Center" Height="40" FontSize="30" Foreground="Blue" Margin="15,0,0,0"/>
+                                        <Button x:Name="monthlyprofitBtn" Click="monthlyprofitBtn_Click" Content="MONTH" Width="100" Height="40" FontWeight="Bold"/>
+                                        <TextBlock Text="YEAR: " Width="80" Height="40" FontSize="30" Foreground="Red" Margin="10,0,0,0"/>
+                                        <TextBox x:Name="monthprofitTextBox" Width="80" TextAlignment="Center" Height="40" FontSize="30" Foreground="Blue" Margin="15,0,0,0"/>
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="2"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                                        <Button Content="YEAR" Width="100" Height="40" FontWeight="Bold"/>
-                                        <TextBlock Text="(FROM 2010 TO NOW)" Width="180" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Red" Margin="5,0,0,0"/>
+                                        <Button x:Name="yearlyprofitBtn" Click="yearlyprofitBtn_Click" Content="YEAR" Width="100" Height="40" FontWeight="Bold"/>
+                                        <TextBlock Text="(FROM 2015 TO NOW)" Width="180" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Red" Margin="5,0,0,0"/>
                                     </StackPanel>
                                 </Grid>
                             </Border>

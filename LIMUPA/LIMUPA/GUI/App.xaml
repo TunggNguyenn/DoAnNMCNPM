@@ -16,6 +16,8 @@
             <converter:SaleConverter x:Key="saleConverter"/>
             <converter:UserConverter x:Key="userConverter"/>
             <converter:PaymentConverter x:Key="paymentConverter"/>
+            <converter:PermissionNameConverter x:Key="permissionnameConverter"/>
+            <converter:PermissionDescriptionConverter x:Key="permissiondescriptionConverter"/>
 
             <Style x:Key="{x:Type GridViewColumnHeader}" TargetType="GridViewColumnHeader">
                 <Setter Property="HorizontalContentAlignment" Value="Center" />

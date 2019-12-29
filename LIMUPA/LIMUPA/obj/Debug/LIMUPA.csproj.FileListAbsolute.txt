@@ -73,3 +73,13 @@ C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\bin\Debug\EO.Base.dll
 C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\bin\Debug\EO.Wpf.dll
 C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\bin\Debug\EO.Base.xml
 C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\bin\Debug\EO.Wpf.xml
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\SaveUpdateNewExpensesWindow.g.cs
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\SaveUpdateNewExpensesWindow.baml
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\DayRevenueWindow.g.cs
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\DayRevenueWindow.baml
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\MonthSummaryWindow.g.cs
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\MonthSummaryWindow.baml
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\YearSummaryWindow.g.cs
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\YearSummaryWindow.baml
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\SettingWindow.g.cs
+C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\GUI\SettingWindow.baml

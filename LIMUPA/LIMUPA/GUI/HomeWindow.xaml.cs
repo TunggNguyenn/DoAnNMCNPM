@@ -29,6 +29,8 @@ namespace LIMUPA.GUI
         BUS_Size busSize = new BUS_Size();
         BUS_Bill busBill = new BUS_Bill();
         BUS_Sale busSale = new BUS_Sale();
+        BUS_Expenses busExpenses = new BUS_Expenses();
+        
 
         UserConverter userConverter = new UserConverter();
         BindingList<Good> _goodsList = new BindingList<Good>();
@@ -40,6 +42,7 @@ namespace LIMUPA.GUI
 
             if (permisionName != "Quản lý")
             {
+                settingButton.Visibility = Visibility.Collapsed;
                 saleTabItem.Visibility = Visibility.Collapsed;
                 expensesTabItem.Visibility = Visibility.Collapsed;
             }
@@ -68,6 +71,10 @@ namespace LIMUPA.GUI
             CollectionView saleView = (CollectionView)CollectionViewSource.GetDefaultView(goodsListView3.ItemsSource);
             PropertyGroupDescription groupDescription = new PropertyGroupDescription("ID_Sale");
             saleView.GroupDescriptions.Add(groupDescription);
+
+
+            //Expenses
+            goodsListView4.ItemsSource = busExpenses.GetAllExpenses();
         }
 
         private bool GoodsFilter(object item)
@@ -487,10 +494,12 @@ namespace LIMUPA.GUI
             totalTextBlock.Text = $"{currentTotal}";
         }
 
-        public void SubstractCurrentTotal(float price)
+        public void SubstractCurrentTotal(float price, int id_Sale)
         {
+            int percentageSale = busSale.GetPercentageByIDSale(id_Sale);
+
             float currentTotal = float.Parse(totalTextBlock.Text);
-            currentTotal -= price;
+            currentTotal += (float)(price * (float)percentageSale / 100);
 
             totalTextBlock.Text = $"{currentTotal}";
         }
@@ -509,7 +518,7 @@ namespace LIMUPA.GUI
 
             if (ValidationWindowScreen.ShowDialog() == true)
             {
-                SubstractCurrentTotal((float)_goodsList[removedGoodsIndex].Price);
+                SubstractCurrentTotal((float)_goodsList[removedGoodsIndex].Price, (int)_goodsList[removedGoodsIndex].ID_Sale);
                 _goodsList.RemoveAt(removedGoodsIndex);
             }
             else
@@ -602,6 +611,177 @@ namespace LIMUPA.GUI
                 PropertyGroupDescription groupDescription = new PropertyGroupDescription("ID_Sale");
                 saleView.GroupDescriptions.Add(groupDescription);
 
+                return;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void addNewExpensesButton_Click(object sender, RoutedEventArgs e)
+        {
+            var SaveUpdateNewExpensesWindowScreen = new SaveUpdateNewExpensesWindow(0, null);
+
+            if (SaveUpdateNewExpensesWindowScreen.ShowDialog() == true)
+            {
+                goodsListView4.ItemsSource = busExpenses.GetAllExpenses();
+
+                return;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var deletedGoodsIndex = goodsListView4.SelectedIndex;
+
+            if (deletedGoodsIndex == -1)
+            {
+                return;
+            }
+
+            var ValidationWindowScreen = new ValidationWindow("DELETE THIS ITEM");
+
+            if (ValidationWindowScreen.ShowDialog() == true)
+            {
+                busExpenses.DeleteExpenses((Expens)goodsListView4.SelectedItem);
+
+                goodsListView4.ItemsSource = busExpenses.GetAllExpenses();
+
+                return;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void editMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var deletedGoodsIndex = goodsListView4.SelectedIndex;
+
+            if (deletedGoodsIndex == -1)
+            {
+                return;
+            }
+
+            var SaveUpdateNewExpensesWindowScreen = new SaveUpdateNewExpensesWindow(1, (Expens)goodsListView4.SelectedItem);
+
+            if (SaveUpdateNewExpensesWindowScreen.ShowDialog() == true)
+            {
+                goodsListView4.ItemsSource = busExpenses.GetAllExpenses();
+
+                return;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+
+        private void daylyrevenueBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (dayrevenueDatePicker.Text == "")
+            {
+                return;
+            }
+
+            var DayRevenueWindowScreen = new DayRevenueWindow((DateTime)dayrevenueDatePicker.SelectedDate);
+
+            if (DayRevenueWindowScreen.ShowDialog() == true)
+            {
+                return;
+            }
+
+            else
+            {
+                return;
+            }
+        }
+
+
+        private void monthlyrevenueBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (monthrevenueTextBox.Text == "")
+            {
+                return;
+            }
+
+            var MonthSummaryWindowScreen = new MonthSummaryWindow(0, int.Parse(monthrevenueTextBox.Text));
+
+            if (MonthSummaryWindowScreen.ShowDialog() == true)
+            {
+                return;
+            }
+
+            else
+            {
+                return;
+            }
+        }
+
+
+        private void monthlyprofitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (monthprofitTextBox.Text == "")
+            {
+                return;
+            }
+
+            var MonthSummaryWindowScreen = new MonthSummaryWindow(1, int.Parse(monthprofitTextBox.Text));
+
+            if (MonthSummaryWindowScreen.ShowDialog() == true)
+            {
+                return;
+            }
+
+            else
+            {
+                return;
+            }
+        }
+
+        private void yearlyrevenueBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var YearSummaryWindowScreen = new YearSummaryWindow(0);
+
+            if (YearSummaryWindowScreen.ShowDialog() == true)
+            {
+                return;
+            }
+
+            else
+            {
+                return;
+            }
+        }
+
+        private void yearlyprofitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var YearSummaryWindowScreen = new YearSummaryWindow(1);
+
+            if (YearSummaryWindowScreen.ShowDialog() == true)
+            {
+                return;
+            }
+
+            else
+            {
+                return;
+            }
+        }
+
+        private void settingButton_Click(object sender, RoutedEventArgs e)
+        {
+            var SettingWindowScreen = new SettingWindow();
+
+            if (SettingWindowScreen.ShowDialog() == true)
+            {
                 return;
             }
             else

@@ -8,9 +8,14 @@ namespace LIMUPA.DAL
 {
     class DAL_Permision: DBConect
     {
-        public List<Permision> GetAllPermisions()
+        public List<Permission> GetAllPermisions()
         {
-            return db.Permisions.ToList();
+            return db.Permissions.ToList();
+        }
+
+        public Permission GetPermissionById(int id)
+        {
+            return db.Permissions.Find(id);
         }
     }
 }
