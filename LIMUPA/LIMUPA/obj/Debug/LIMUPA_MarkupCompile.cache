@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\obj\Debug\
+C:\Users\Tung Nguyen\source\repos\NMCNPM\LIMUPA\LIMUPA\obj\Debug\
 LIMUPA
 none
 false
 DEBUG;TRACE
-C:\Users\Tung Nguyen\source\repos\LIMUPA\LIMUPA\GUI\App.xaml
+C:\Users\Tung Nguyen\source\repos\NMCNPM\LIMUPA\LIMUPA\GUI\App.xaml
 19353812913
 21187196051
 71-1731810886
-29-492642647
+291113098341
 GUI\AddItemsToCartWindow.xaml;GUI\DayRevenueWindow.xaml;GUI\MonthSummaryWindow.xaml;GUI\SaveUpdateNewExpensesWindow.xaml;GUI\AddNewSaleWindow.xaml;GUI\AddNewWindow.xaml;GUI\AnnouncementWindow.xaml;GUI\GoodsInformationWindow.xaml;GUI\HomeWindow.xaml;GUI\LoginWindow.xaml;GUI\PaymentWindow.xaml;GUI\SaleGoodsInfoWindow.xaml;GUI\SaleItemsWindow.xaml;GUI\SaleWindow.xaml;GUI\SettingWindow.xaml;GUI\UpdateSaleGoodsWindow.xaml;GUI\UpdateWindow.xaml;GUI\ValidationWindow.xaml;GUI\YearSummaryWindow.xaml;
 
 False

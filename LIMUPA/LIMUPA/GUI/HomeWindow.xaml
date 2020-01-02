@@ -242,7 +242,7 @@
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="TIỀN KHÁCH ĐƯA: " Margin="10,0,0,0" FontSize="20" Foreground="Red" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBox x:Name="cashTextBox" Text="0" Width="250" Margin="10,0,10,0" BorderBrush="Black" TextAlignment="Right" BorderThickness="2" FontSize="20" Foreground="Blue"  FontWeight="Bold"/>
+                                    <TextBox x:Name="cashTextBox" TextChanged="cashTextBox_TextChanged" Text="0" Width="250" Margin="10,0,10,0" BorderBrush="Black" TextAlignment="Right" BorderThickness="2" FontSize="20" Foreground="Blue"  FontWeight="Bold"/>
                                     <TextBlock Text="(VNĐ)" TextAlignment="Center" Margin="10,0,0,0" FontSize="20" Foreground="Red" FontWeight="Bold"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">

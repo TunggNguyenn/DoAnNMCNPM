@@ -499,6 +499,7 @@ namespace LIMUPA.GUI
             int percentageSale = busSale.GetPercentageByIDSale(id_Sale);
 
             float currentTotal = float.Parse(totalTextBlock.Text);
+            currentTotal -= price;
             currentTotal += (float)(price * (float)percentageSale / 100);
 
             totalTextBlock.Text = $"{currentTotal}";
@@ -787,6 +788,14 @@ namespace LIMUPA.GUI
             else
             {
                 return;
+            }
+        }
+
+        private void cashTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(cashTextBox.Text == "")
+            {
+                cashTextBox.Text = "0";
             }
         }
     }

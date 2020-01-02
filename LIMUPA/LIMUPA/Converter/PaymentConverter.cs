@@ -12,7 +12,14 @@ namespace LIMUPA.Converter
     {
         public object Convert(object[] values, System.Type targetType, object parameter, CultureInfo culture)
         {
-            double cash = double.Parse((string)values[0]);
+            string cashStr = (string)values[0];
+
+            if(cashStr == "")
+            {
+                cashStr = "0";
+            }
+
+            double cash = double.Parse((string)cashStr);
             double total = double.Parse((string)values[1]);
 
             double change = cash - total;
