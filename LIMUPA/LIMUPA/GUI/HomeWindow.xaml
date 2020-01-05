@@ -291,6 +291,7 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                        <Button x:Name="viewbillButton" Click="viewbillButton_Click" HorizontalAlignment="Left" Width="100" Background="Green" BorderBrush="Gray" BorderThickness="2" Content="BILL" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBox x:Name="searchTextBox1" Text="" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
                             <Button x:Name="searchButton1" Click="searchButton1_Click" BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" Content="SEARCH" FontSize="20"/>
@@ -530,7 +531,7 @@
                     </Grid>
 
                     <Grid Grid.Row="1">
-                        <ListView x:Name="goodsListView3"  MouseDoubleClick="goodsListView3_MouseDoubleClick" Margin="0,0,10,0">
+                        <ListView x:Name="goodsListView3" MouseDoubleClick="goodsListView3_MouseDoubleClick" Margin="0,0,10,0">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding GoodsCode}">

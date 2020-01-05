@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LIMUPA.GUI"
         mc:Ignorable="d"
         Title="Payment" WindowStyle="None" WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize" Height="750" Width="1000"
+        ResizeMode="NoResize" Height="750" Width="1050"
         FontFamily="Segoe UI Emoji"
         BorderThickness="1"
         BorderBrush="Purple">
@@ -173,7 +173,8 @@
                 <TextBlock TextAlignment="Center" Text="TOTAL (incude 10% VAT): " FontSize="20" Foreground="Red" FontWeight="Bold"/>
                 <TextBlock x:Name="totalTextBlock" TextAlignment="Center" Text="" Width="200" FontSize="20" Foreground="Blue" FontStyle="Italic" FontWeight="Bold"/>
                 <TextBlock Margin="0,0,200,0" TextAlignment="Center" Text="(VNĐ)" FontSize="20" Foreground="Red" FontWeight="Bold"/>
-                <Button x:Name="paynowButton" Click="paynowButton_Click"  Background="Green" Margin="0,0,10,0" BorderBrush="Gray" BorderThickness="2" Height="40" FontWeight="Bold" Width="120" Content="PAY NOW"  Grid.Row="5"   Grid.ColumnSpan="2"/>
+                <Button x:Name="paynowButton" Visibility="Visible" Click="paynowButton_Click"  Background="Green" Margin="0,0,10,0" BorderBrush="Gray" BorderThickness="2" Height="40" FontWeight="Bold" Width="120" Content="PAY NOW"  Grid.Row="5"   Grid.ColumnSpan="2"/>
+                <Button x:Name="okButton" Visibility="Collapsed" Click="okButton_Click" Margin="0,0,10,0" BorderBrush="Gray" BorderThickness="2" Height="40" FontWeight="Bold" Width="120" Content="OK"  Grid.Row="5"   Grid.ColumnSpan="2"/>
                 <Button x:Name="cancelButton" Click="cancelButton_Click" BorderBrush="Gray" Margin="0,0,30,0" BorderThickness="2" Height="40" FontWeight="Bold" Width="120" Content="CANCEL" Grid.Row="5"  HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
             </StackPanel>
 

@@ -110,5 +110,44 @@ namespace LIMUPA.BUS
 
             return total;
         }
+
+        public List<Bill> GetBills()
+        {
+            List<Bill> bills = GetAllBills();
+
+            for(int i = 0; i < bills.Count; i++)
+            {
+                if (i == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    if(bills[i].BillCode == bills[i - 1].BillCode)
+                    {
+                        bills.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+            return bills;
+        }
+
+        public List<int> GetID_GoodsByBillCode(string billCode)
+        {
+            List<Bill> bills = GetAllBills();
+            List<int> id_goodsList = new List<int>();
+
+            for (int i = 0; i < bills.Count; i++)
+            {
+                if(bills[i].BillCode == billCode)
+                {
+                    id_goodsList.Add(bills[i].ID_Goods.Value);
+                }
+            }
+
+            return id_goodsList;
+        }
     }
 }

@@ -101,5 +101,20 @@ namespace LIMUPA.BUS
 
             return filteredGoods;
         }
+
+        public bool IsGoodsCodeValid(string goodsCode)
+        {
+            List<Good> goods = dalGoods.GetAllGoods();
+
+            for(int i = 0; i < goods.Count; i++)
+            {
+                if(goods[i].GoodsCode == goodsCode)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

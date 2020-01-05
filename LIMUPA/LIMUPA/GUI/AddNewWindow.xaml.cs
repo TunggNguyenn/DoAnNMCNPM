@@ -54,6 +54,35 @@ namespace LIMUPA.GUI
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
+            if (goodsCodeTextBox.Text == "" || goodsNameTextBox.Text == "" || colorCmb.SelectedIndex == -1 || brandCmb.SelectedIndex == -1 || sizeCmb.SelectedIndex == -1 ||
+                typeCmb.SelectedIndex == -1 || numberTextBox.Text == "" || importDateDatePicker.Text == "" || priceTextBox.Text == "")
+            {
+                var AnnouncementWindowScreen = new AnnouncementWindow("THE INFORMATION IS INVALID. PLEASE CHECK AGAIN...");
+
+                if (AnnouncementWindowScreen.ShowDialog() == true)
+                {
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            if (busGoods.IsGoodsCodeValid(goodsCodeTextBox.Text) == false)
+            {
+                var AnnouncementWindowScreen = new AnnouncementWindow("GOODSCODE IS INVALID");
+
+                if (AnnouncementWindowScreen.ShowDialog() == true)
+                {
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
             Good newGoods = new Good()
             {
                 GoodsCode = goodsCodeTextBox.Text,

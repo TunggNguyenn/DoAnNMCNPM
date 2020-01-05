@@ -20,10 +20,21 @@ namespace LIMUPA.GUI
     /// </summary>
     public partial class PaymentWindow : Window
     {
-        public PaymentWindow(string idBill, string customername, string phonenumber, string address,
+        public PaymentWindow(int mode, string idBill, string customername, string phonenumber, string address,
                              string staffname, List<Good> goodsList, string total)
         {
             InitializeComponent();
+
+            if (mode == 0)
+            {
+                paynowButton.Visibility = Visibility.Visible;
+                okButton.Visibility = Visibility.Collapsed;
+            }
+            else if (mode == 1)
+            {
+                paynowButton.Visibility = Visibility.Collapsed;
+                okButton.Visibility = Visibility.Visible;
+            } 
 
             idTextBlock.Text = idBill;
             customernameTextBox.Text = customername;
@@ -58,6 +69,12 @@ namespace LIMUPA.GUI
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
+            this.Close();
+        }
+
+        private void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
             this.Close();
         }
     }

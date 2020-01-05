@@ -160,6 +160,9 @@
     <Compile Include="GUI\UpdateSaleGoodsWindow.xaml.cs">
       <DependentUpon>UpdateSaleGoodsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ViewBillWindow.xaml.cs">
+      <DependentUpon>ViewBillWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\YearSummaryWindow.xaml.cs">
       <DependentUpon>YearSummaryWindow.xaml</DependentUpon>
     </Compile>
@@ -303,6 +306,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\ValidationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\ViewBillWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

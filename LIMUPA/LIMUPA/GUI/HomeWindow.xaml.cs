@@ -551,7 +551,7 @@ namespace LIMUPA.GUI
 
         private void doneButton_Click(object sender, RoutedEventArgs e)
         {
-            var PaymentWindowScreen = new PaymentWindow(id2TextBlock.Text, customernameTextBox.Text, phonenumberTextBox.Text, addressTextBox.Text,
+            var PaymentWindowScreen = new PaymentWindow(0, id2TextBlock.Text, customernameTextBox.Text, phonenumberTextBox.Text, addressTextBox.Text,
                                                         staffnameTextBlock.Text, _goodsList.ToList(), totalTextBlock.Text);
 
             if (PaymentWindowScreen.ShowDialog() == true)
@@ -796,6 +796,20 @@ namespace LIMUPA.GUI
             if(cashTextBox.Text == "")
             {
                 cashTextBox.Text = "0";
+            }
+        }
+
+        private void viewbillButton_Click(object sender, RoutedEventArgs e)
+        {
+            var ViewBillWindowScreen = new ViewBillWindow();
+
+            if (ViewBillWindowScreen.ShowDialog() == true)
+            {
+
+            }
+            else
+            {
+                return;
             }
         }
     }
