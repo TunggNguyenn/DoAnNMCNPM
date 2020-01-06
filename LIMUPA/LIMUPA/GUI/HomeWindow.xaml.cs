@@ -413,6 +413,12 @@ namespace LIMUPA.GUI
 
         private void goodsListView3_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            //
+            if (goodsListView3.SelectedIndex == -1)
+            {
+                return;
+            }
+
             var selectedGoods = goodsListView3.SelectedItem as Good;
 
             Good updatedGoods = busGoods.GetGoodsById(selectedGoods.ID);
