@@ -32,7 +32,8 @@ namespace LIMUPA.GUI
             importDateTime = (DateTime)importDate.SelectedDate;
             nowDateTime = (DateTime)nowDate.SelectedDate;
             importdateTextBlock.Text = importDate.Text;
-            nowdateTextBlock.Text = DateTime.Now.Date.ToShortDateString();  //
+            //nowdateTextBlock.Text = DateTime.Now.Date.ToShortDateString();  //
+            nowdateTextBlock.Text = nowDate.SelectedDate.ToString();
 
 
             goodsListView.ItemsSource = busGoods.GetGoodsByImportDate((DateTime)importDate.SelectedDate, (DateTime)nowDate.SelectedDate).ToList();
